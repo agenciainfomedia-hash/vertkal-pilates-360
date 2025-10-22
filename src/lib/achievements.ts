@@ -147,7 +147,7 @@ export const achievements: Achievement[] = [
     title: 'Mês Perfeito',
     description: 'Complete 30 dias consecutivos (incluindo manutenção)',
     icon: Gem,
-    category: 'especistencia',
+    category: 'consistencia', // Corrected typo from 'especistencia' to 'consistencia'
     condition: { type: 'streak', value: 30 },
     reward: { points: 750, badge: 'Diamante' },
     isVIP: false
