@@ -26,6 +26,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "next-env.d.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src"]
 }
