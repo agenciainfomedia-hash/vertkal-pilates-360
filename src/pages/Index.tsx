@@ -307,17 +307,17 @@ export default function VertkalPilates360() {
         }`}>
           <CardContent className="p-4">
             <div className="flex items-start justify-between mb-3">
-              <div className="flex-1">
-                <h3 className="font-semibold text-white text-sm leading-tight mb-1">{exercise.title}</h3>
+              <div className="flex-1 min-w-0"> {/* Added min-w-0 to allow text wrapping */}
+                <h3 className="font-semibold text-white text-sm leading-tight mb-1 break-words">{exercise.title}</h3> {/* Added break-words */}
                 <p className="text-xs text-gray-400 mb-2">{exercise.duration}</p>
-                <p className="text-xs text-gray-300 leading-tight">{exercise.description}</p>
+                <p className="text-xs text-gray-300 leading-tight break-words">{exercise.description}</p> {/* Added break-words */}
               </div>
               {isCompleted && <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 ml-2" />}
               {!canAccess && <Lock className="h-5 w-5 text-gray-500 flex-shrink-0 ml-2" />}
             </div>
 
-            <div className="flex items-center justify-between">
-              <Badge variant="secondary" className={`text-xs ${
+            <div className="flex flex-wrap items-center justify-between gap-2 mt-3"> {/* Added flex-wrap and gap-2 */}
+              <Badge variant="secondary" className={`text-xs flex-shrink-0 ${ /* Added flex-shrink-0 */
                 exercise.phase === 'perda' ? 'bg-orange-500/20 text-orange-400' :
                 exercise.phase === 'definicao' ? 'bg-blue-500/20 text-blue-400' :
                 'bg-green-500/20 text-green-400'
@@ -332,7 +332,7 @@ export default function VertkalPilates360() {
                     setSelectedExercise(exercise)
                     setCurrentView('exercise')
                   }}
-                  className={`text-xs px-3 py-1 ${
+                  className={`text-xs px-3 py-1 flex-shrink-0 ${ /* Added flex-shrink-0 */
                     isNext ? 'bg-[#ECA20C] text-black hover:bg-[#ECA20C]/90' : 
                     'bg-gray-700 text-white hover:bg-gray-600'
                   }`}
@@ -344,7 +344,7 @@ export default function VertkalPilates360() {
                 <Button 
                   size="sm" 
                   onClick={() => setCurrentView('vip')}
-                  className="text-xs px-3 py-1 bg-gradient-to-r from-[#ECA20C] to-orange-500 text-black hover:from-[#ECA20C]/90 hover:to-orange-500/90"
+                  className="text-xs px-3 py-1 bg-gradient-to-r from-[#ECA20C] to-orange-500 text-black hover:from-[#ECA20C]/90 hover:to-orange-500/90 flex-shrink-0" /* Added flex-shrink-0 */
                 >
                   <Crown className="h-3 w-3 mr-1" />
                   VIP
@@ -369,9 +369,9 @@ export default function VertkalPilates360() {
               <div className="w-16 h-16 bg-gray-700 rounded-lg flex items-center justify-center flex-shrink-0">
                 <ImageIcon className="h-8 w-8 text-gray-400" />
               </div>
-              <div className="flex-1">
-                <h3 className="font-semibold text-white text-sm leading-tight mb-1">{exercise.name}</h3>
-                <p className="text-xs text-gray-300 leading-tight mb-2">{exercise.description}</p>
+              <div className="flex-1 min-w-0"> {/* Added min-w-0 */}
+                <h3 className="font-semibold text-white text-sm leading-tight mb-1 break-words">{exercise.name}</h3> {/* Added break-words */}
+                <p className="text-xs text-gray-300 leading-tight mb-2 break-words">{exercise.description}</p> {/* Added break-words */}
                 <div className="flex items-center gap-2 text-xs text-gray-400">
                   <Timer className="h-3 w-3" />
                   <span>{exercise.reps}</span>
@@ -379,7 +379,7 @@ export default function VertkalPilates360() {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-1">
+            <div className="flex flex-wrap gap-1"> {/* Added flex-wrap */}
               {exercise.muscles.map((muscle, index) => (
                 <Badge key={index} variant="outline" className="text-xs border-gray-600 text-gray-400">
                   {muscle}
@@ -403,7 +403,7 @@ export default function VertkalPilates360() {
           <Button variant="ghost" onClick={onBack} className="text-gray-400 hover:text-white">
             ← Voltar
           </Button>
-          <h1 className="text-2xl font-bold text-white">{exercise.title}</h1>
+          <h1 className="text-2xl font-bold text-white break-words">{exercise.title}</h1> {/* Added break-words */}
         </div>
 
         <Card className="bg-[#1A1A1A] border-gray-800">
@@ -420,11 +420,11 @@ export default function VertkalPilates360() {
                 <h3 className="text-lg font-semibold text-white mb-2">Instruções</h3>
                 <div className="space-y-2">
                   {exercise.instructions.map((instruction, index) => (
-                    <div key={index} className="flex items-center gap-3">
-                      <div className="w-6 h-6 bg-[#ECA20C] text-black rounded-full flex items-center justify-center text-sm font-bold">
+                    <div key={index} className="flex items-start gap-3"> {/* Changed items-center to items-start */}
+                      <div className="w-6 h-6 bg-[#ECA20C] text-black rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"> {/* Added flex-shrink-0 */}
                         {index + 1}
                       </div>
-                      <p className="text-gray-300">{instruction}</p>
+                      <p className="text-gray-300 break-words flex-1">{instruction}</p> {/* Added break-words and flex-1 */}
                     </div>
                   ))}
                 </div>
@@ -479,8 +479,8 @@ export default function VertkalPilates360() {
                     }`}>
                       <achievement.icon className="h-8 w-8" />
                     </div>
-                    <h3 className="font-semibold text-white mb-2">{achievement.title}</h3>
-                    <p className="text-sm text-gray-400 mb-4">{achievement.description}</p>
+                    <h3 className="font-semibold text-white mb-2 break-words">{achievement.title}</h3> {/* Added break-words */}
+                    <p className="text-sm text-gray-400 mb-4 break-words">{achievement.description}</p> {/* Added break-words */}
                     {isUnlocked && (
                       <Badge className="bg-yellow-500 text-black">
                         <Trophy className="h-3 w-3 mr-1" />
@@ -514,8 +514,8 @@ export default function VertkalPilates360() {
         <Card className="bg-gradient-to-br from-[#ECA20C]/10 to-orange-500/10 border-[#ECA20C]/30">
           <CardContent className="p-8 text-center">
             <Crown className="h-16 w-16 text-[#ECA20C] mx-auto mb-6" />
-            <h2 className="text-3xl font-bold text-white mb-4">Desbloqueie seu Potencial Máximo</h2>
-            <p className="text-lg text-gray-300 mb-8">Acesse módulos exclusivos e acelere seus resultados com o plano VIP 360°</p>
+            <h2 className="text-3xl font-bold text-white mb-4 break-words">Desbloqueie seu Potencial Máximo</h2> {/* Added break-words */}
+            <p className="text-lg text-gray-300 mb-8 break-words">Acesse módulos exclusivos e acelere seus resultados com o plano VIP 360°</p> {/* Added break-words */}
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               {vipBenefits.map((benefit, index) => (
@@ -527,12 +527,12 @@ export default function VertkalPilates360() {
                   className="flex items-center gap-4 p-4 bg-black/20 rounded-lg"
                 >
                   <benefit.icon className="h-8 w-8 text-[#ECA20C] flex-shrink-0" />
-                  <p className="text-white font-medium">{benefit.text}</p>
+                  <p className="text-white font-medium text-left flex-1 break-words">{benefit.text}</p> {/* Added text-left, flex-1, break-words */}
                 </motion.div>
               ))}
             </div>
 
-            <Button className="bg-gradient-to-r from-[#ECA20C] to-orange-500 hover:from-[#ECA20C]/90 hover:to-orange-500/90 text-black font-bold px-12 py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <Button className="w-full bg-gradient-to-r from-[#ECA20C] to-orange-500 hover:from-[#ECA20C]/90 hover:to-orange-500/90 text-black font-bold px-6 py-3 text-base sm:px-12 sm:py-4 sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"> {/* Adjusted padding and font size for mobile, added w-full */}
               <Crown className="h-5 w-5 mr-2" />
               Upgrade Agora - R$ 97/mês
             </Button>
@@ -552,8 +552,8 @@ export default function VertkalPilates360() {
                   <Lock className="h-6 w-6 text-[#ECA20C]" />
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="font-semibold text-white text-lg mb-2">{exercise.title}</h3>
-                  <p className="text-gray-300 mb-4">{exercise.description}</p>
+                  <h3 className="font-semibold text-white text-lg mb-2 break-words">{exercise.title}</h3> {/* Added break-words */}
+                  <p className="text-gray-300 mb-4 break-words">{exercise.description}</p> {/* Added break-words */}
                   <div className="flex items-center gap-2 text-sm text-gray-400">
                     <Timer className="h-4 w-4" />
                     <span>{exercise.duration}</span>
@@ -584,12 +584,12 @@ export default function VertkalPilates360() {
         <Card className="bg-[#1A1A1A] border-gray-800">
           <CardContent className="p-6">
             <div className="flex items-center gap-6 mb-6">
-              <div className="w-20 h-20 bg-[#ECA20C] rounded-full flex items-center justify-center">
+              <div className="w-20 h-20 bg-[#ECA20C] rounded-full flex items-center justify-center flex-shrink-0">
                 <User className="h-10 w-10 text-black" />
               </div>
-              <div>
-                <h2 className="text-2xl font-bold text-white">{currentUser?.name}</h2>
-                <p className="text-gray-400">{currentUser?.email}</p>
+              <div className="flex-1 min-w-0"> {/* Added flex-1 min-w-0 */}
+                <h2 className="text-2xl font-bold text-white break-words">{currentUser?.name}</h2> {/* Added break-words */}
+                <p className="text-gray-400 break-words">{currentUser?.email}</p> {/* Added break-words */}
                 <Badge className={`mt-2 ${currentUser?.plan === 'vip' ? 'bg-[#ECA20C] text-black' : 'bg-gray-700 text-white'}`}>
                   {currentUser?.plan === 'vip' ? 'VIP 360°' : 'Plano Essencial'}
                 </Badge>
@@ -732,22 +732,22 @@ export default function VertkalPilates360() {
         className="bg-[#1A1A1A] border-b border-gray-800 p-4 sticky top-0 z-50"
       >
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="text-2xl font-bold text-[#ECA20C]">VERTIKAL</div>
+          <div className="text-2xl font-bold text-[#ECA20C] flex-shrink-0">VERTIKAL</div> {/* Added flex-shrink-0 */}
           <div className="flex items-center gap-4">
             <motion.div 
-              className="text-right"
+              className="text-right flex-1 min-w-0" /* Added flex-1 min-w-0 */
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              <p className="text-sm text-gray-400">Olá, {currentUser?.name}!</p>
-              <p className="text-xs text-[#ECA20C] font-medium">{currentUser?.plan === 'vip' ? 'VIP 360°' : 'Plano Essencial'}</p>
+              <p className="text-sm text-gray-400 break-words">Olá, {currentUser?.name}!</p> {/* Added break-words */}
+              <p className="text-xs text-[#ECA20C] font-medium break-words">{currentUser?.plan === 'vip' ? 'VIP 360°' : 'Plano Essencial'}</p> {/* Added break-words */}
             </motion.div>
             <Button 
               variant="ghost" 
               size="sm"
               onClick={() => setCurrentView('profile')}
-              className="text-gray-300 hover:text-white hover:bg-gray-800"
+              className="text-gray-300 hover:text-white hover:bg-gray-800 flex-shrink-0" /* Added flex-shrink-0 */
             >
               <User className="h-5 w-5" />
             </Button>
@@ -769,7 +769,7 @@ export default function VertkalPilates360() {
               animate={{ scale: 1 }}
               className="bg-gradient-to-r from-[#ECA20C]/10 to-orange-500/10 border border-[#ECA20C]/20 rounded-xl p-6 text-center"
             >
-              <p className="text-lg font-medium text-white">{dailyMessage}</p>
+              <p className="text-lg font-medium text-white break-words">{dailyMessage}</p> {/* Added break-words */}
             </motion.div>
 
             {/* Progress Overview */}
@@ -843,11 +843,11 @@ export default function VertkalPilates360() {
                   <div className="space-y-4">
                     {Object.entries(phaseNames).map(([phase]) => (
                       <div key={phase} className="flex items-center gap-4">
-                        <div className="w-24 text-sm text-gray-400">{phaseNames[phase as keyof typeof phaseNames]}</div>
+                        <div className="w-24 text-sm text-gray-400 flex-shrink-0">{phaseNames[phase as keyof typeof phaseNames]}</div> {/* Added flex-shrink-0 */}
                         <div className="flex-1">
                           <Progress value={getPhaseProgress(phase as any)} className="h-2" />
                         </div>
-                        <div className="w-12 text-right text-sm text-white">{getPhaseProgress(phase as any)}%</div>
+                        <div className="w-12 text-right text-sm text-white flex-shrink-0">{getPhaseProgress(phase as any)}%</div> {/* Added flex-shrink-0 */}
                       </div>
                     ))}
                   </div>
@@ -862,12 +862,12 @@ export default function VertkalPilates360() {
               transition={{ delay: 0.5 }}
             >
               <Tabs defaultValue="todos" className="w-full">
-                <TabsList className="grid w-full grid-cols-5 bg-[#1A1A1A] border border-gray-800">
-                  <TabsTrigger value="todos" className="data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black">Todos</TabsTrigger>
-                  <TabsTrigger value="perda" className="data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black">Perda</TabsTrigger>
-                  <TabsTrigger value="definicao" className="data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black">Definição</TabsTrigger>
-                  <TabsTrigger value="consolidacao" className="data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black">Consolidação</TabsTrigger>
-                  <TabsTrigger value="dicionario" className="data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black">
+                <TabsList className="flex w-full overflow-x-auto whitespace-nowrap bg-[#1A1A1A] border border-gray-800 p-1"> {/* Changed to flex, overflow-x-auto, whitespace-nowrap, added p-1 */}
+                  <TabsTrigger value="todos" className="flex-shrink-0 px-4 py-2 data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black">Todos</TabsTrigger> {/* Added flex-shrink-0, px-4 py-2 */}
+                  <TabsTrigger value="perda" className="flex-shrink-0 px-4 py-2 data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black">Perda</TabsTrigger> {/* Added flex-shrink-0, px-4 py-2 */}
+                  <TabsTrigger value="definicao" className="flex-shrink-0 px-4 py-2 data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black">Definição</TabsTrigger> {/* Added flex-shrink-0, px-4 py-2 */}
+                  <TabsTrigger value="consolidacao" className="flex-shrink-0 px-4 py-2 data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black">Consolidação</TabsTrigger> {/* Added flex-shrink-0, px-4 py-2 */}
+                  <TabsTrigger value="dicionario" className="flex-shrink-0 px-4 py-2 data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black"> {/* Added flex-shrink-0, px-4 py-2 */}
                     <BookOpen className="h-4 w-4 mr-1" />
                     Dicionario
                   </TabsTrigger>
@@ -910,11 +910,11 @@ export default function VertkalPilates360() {
                 className="bg-gradient-to-r from-[#ECA20C]/20 to-orange-500/20 border border-[#ECA20C]/30 rounded-xl p-6 text-center"
               >
                 <Crown className="h-12 w-12 text-[#ECA20C] mx-auto mb-4" />
-                <h3 className="text-xl font-bold text-white mb-2">Desbloqueie seu Potencial Máximo!</h3>
-                <p className="text-gray-300 mb-4">Acesse módulos exclusivos e acelere seus resultados</p>
+                <h3 className="text-xl font-bold text-white mb-2 break-words">Desbloqueie seu Potencial Máximo!</h3> {/* Added break-words */}
+                <p className="text-gray-300 mb-4 break-words">Acesse módulos exclusivos e acelere seus resultados</p> {/* Added break-words */}
                 <Button 
                   onClick={() => setCurrentView('vip')}
-                  className="bg-gradient-to-r from-[#ECA20C] to-orange-500 hover:from-[#ECA20C]/90 hover:to-orange-500/90 text-black font-bold px-8 py-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  className="w-full bg-gradient-to-r from-[#ECA20C] to-orange-500 hover:from-[#ECA20C]/90 hover:to-orange-500/90 text-black font-bold px-8 py-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 >
                   Upgrade para VIP 360°
                 </Button>
