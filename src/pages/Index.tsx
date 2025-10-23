@@ -706,9 +706,11 @@ export default function VertkalPilates360() {
           className="w-full max-w-md"
         >
           <div className="text-center mb-8">
-            <div className="h-20 w-auto mx-auto mb-6 flex items-center justify-center">
-              <div className="text-4xl font-bold text-[#ECA20C]">VERTIKAL</div>
-            </div>
+            <img 
+              src="/logo.png" 
+              alt="Vertkal Pilates 360° Logo" 
+              className="w-48 h-auto mx-auto mb-6" 
+            />
             <motion.p 
               className="text-gray-300 mt-4 text-lg font-medium"
               initial={{ opacity: 0 }}
@@ -725,35 +727,35 @@ export default function VertkalPilates360() {
                 {authMode === 'login' ? 'Bem-vindo de volta!' : 'Comece sua jornada!'}
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-6"> {/* Added padding to CardContent */}
               <form onSubmit={handleAuth} className="space-y-4">
                 {authMode === 'register' && (
                   <Input
                     placeholder="Seu nome incrível"
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="bg-black border-gray-700 focus:border-[#ECA20C] transition-colors"
+                    className="bg-black border-gray-700 focus:border-[#ECA20C] transition-colors rounded-lg px-4 py-2" // Added rounded-lg, px-4 py-2
                   />
                 )}
                 <Input
                   type="email"
                   placeholder="Seu melhor email"
                   value={formData.email}
-                  onChange={(e) => setFormData({...formData.email, email: e.target.value})}
-                  className="bg-black border-gray-700 focus:border-[#ECA20C] transition-colors"
+                  onChange={(e) => setFormData({...formData, email: e.target.value})} // Fixed formData spread
+                  className="bg-black border-gray-700 focus:border-[#ECA20C] transition-colors rounded-lg px-4 py-2" // Added rounded-lg, px-4 py-2
                   required
                 />
                 <Input
                   type="password"
                   placeholder="Senha segura"
                   value={formData.password}
-                  onChange={(e) => setFormData({...formData.password, password: e.target.value})}
-                  className="bg-black border-gray-700 focus:border-[#ECA20C] transition-colors"
+                  onChange={(e) => setFormData({...formData, password: e.target.value})} // Fixed formData spread
+                  className="bg-black border-gray-700 focus:border-[#ECA20C] transition-colors rounded-lg px-4 py-2" // Added rounded-lg, px-4 py-2
                   required
                 />
                 <Button 
                   type="submit" 
-                  className="w-full bg-gradient-to-r from-[#ECA20C] to-orange-500 hover:from-[#ECA20C]/90 hover:to-orange-500/90 text-black font-bold py-3 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  className="w-full bg-gradient-to-r from-[#ECA20C] to-orange-500 hover:from-[#ECA20C]/90 hover:to-orange-500/90 text-black font-bold py-3 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 rounded-lg" // Added rounded-lg
                 >
                   {authMode === 'login' ? 'Entrar e continuar' : 'Começar transformação!'}
                 </Button>
@@ -960,11 +962,11 @@ export default function VertkalPilates360() {
                 transition={{ delay: 0.7 }}
                 className="space-y-6 mt-8"
               >
-                <h2 className="text-2xl font-bold text-white flex items-center gap-2 justify-center"> {/* Added justify-center */}
+                <h2 className="text-2xl font-bold text-white flex items-center gap-2 justify-center">
                   <Crown className="h-6 w-6 text-[#ECA20C]" />
                   Módulos VIP Exclusivos
                 </h2>
-                <p className="text-gray-400 mb-4 text-center">Acelere seus resultados com treinos avançados e conteúdo premium.</p> {/* Added text-center */}
+                <p className="text-gray-400 mb-4 text-center">Acelere seus resultados com treinos avançados e conteúdo premium.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {exercises.filter(ex => ex.isVip).map((exercise) => (
                     <motion.div
