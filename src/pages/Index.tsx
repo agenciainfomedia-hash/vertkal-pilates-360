@@ -30,6 +30,7 @@ import {
 } from 'lucide-react'
 import { achievements, checkAchievements } from '@/lib/achievements'
 import { exerciseDictionary } from '@/lib/exercises'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip' // Import Tooltip components
 
 interface User {
   id: string
@@ -206,13 +207,15 @@ export default function VertkalPilates360() {
   const completeExercise = (exerciseId: string) => {
     if (!currentUser) return
 
-    const updatedProgress = [...currentUser.progress, parseInt(exerciseId.split('-')[1])]
+    const dayNumber = parseInt(exerciseId.split('-')[1]);
+    // Ensure progress only contains unique day numbers and is sorted
+    const updatedProgress = Array.from(new Set([...currentUser.progress, dayNumber])).sort((a, b) => a - b);
     
     const currentStreak = calculateStreak(updatedProgress);
     const isVIP = currentUser.plan === 'vip';
 
     const newAchievementIds = checkAchievements({
-      completedDays: updatedProgress,
+      completedDays: updatedProgress, // Pass the array of completed days
       currentStreak: currentStreak,
       isVIP: isVIP,
       completedChallenges: [] // Placeholder for now
@@ -228,7 +231,7 @@ export default function VertkalPilates360() {
       progress: updatedProgress,
       achievements: newAchievementIds, // Update with all unlocked achievement IDs
       points: currentUser.points + 10,
-      completedDays: updatedProgress.length,
+      completedDays: updatedProgress.length, // This is now accurate
       streak: currentStreak
     }
     
@@ -250,11 +253,11 @@ export default function VertkalPilates360() {
   const calculateStreak = (progress: number[]): number => {
     if (progress.length === 0) return 0
     
-    const sortedProgress = [...progress].sort((a, b) => b - a)
+    const sortedProgress = [...progress].sort((a, b) => b - a) // Sorts descending
     let streak = 1
     
     for (let i = 1; i < sortedProgress.length; i++) {
-      if (sortedProgress[i-1] - sortedProgress[i] === 1) {
+      if (sortedProgress[i-1] - sortedProgress[i] === 1) { // Checks if previous day is exactly 1 greater than current
         streak++
       } else {
         break
@@ -270,15 +273,25 @@ export default function VertkalPilates360() {
   }
 
   const canAccessExercise = (exercise: Exercise) => {
-    if (!currentUser) return false
+    if (!currentUser) return false;
+
+    // VIP users can access all exercises, including VIP modules
     if (currentUser.plan === 'vip') {
-      return true; // VIP users can access everything
+      return true;
     }
-    // Essential plan user
-    // Essential users can access all non-VIP exercises (days 1-21)
-    // VIP modules are not accessible for essential users
-    return !exercise.isVip; 
-  }
+
+    // Essential plan user logic
+    if (exercise.isVip) {
+      return false; // Essential users cannot access VIP modules
+    }
+
+    // For essential (non-VIP) exercises, implement sequential unlock
+    const lastCompletedDay = currentUser.completedDays; // This is the count of completed days
+    const nextDayToUnlock = lastCompletedDay + 1;
+
+    // A day is accessible if it's already completed OR it's the next day to unlock
+    return currentUser.progress.includes(exercise.day) || exercise.day === nextDayToUnlock;
+  };
 
   const getPhaseProgress = (phase: 'perda' | 'definicao' | 'consolidacao') => {
     if (!currentUser) return 0
@@ -294,70 +307,103 @@ export default function VertkalPilates360() {
   const ExerciseCard = ({ exercise }: { exercise: Exercise }) => {
     const isCompleted = currentUser?.progress.includes(exercise.day)
     const canAccess = canAccessExercise(exercise)
-    const isNext = exercise.day === (currentUser?.progress.length || 0) + 1 && !isCompleted
+    const isNext = exercise.day === (currentUser?.completedDays || 0) + 1 && !isCompleted && !exercise.isVip; // Adjusted isNext for essential program
+
+    const cardContent = (
+      <CardContent className="p-4">
+        <div className="flex items-start justify-between mb-3">
+          <div className="flex-1 min-w-0"> {/* Added min-w-0 to allow text wrapping */}
+            <h3 className="font-semibold text-white text-sm leading-tight mb-1 break-words">{exercise.title}</h3> {/* Added break-words */}
+            <p className="text-xs text-gray-400 mb-2">{exercise.duration}</p>
+            <p className="text-xs text-gray-300 leading-tight break-words">{exercise.description}</p> {/* Added break-words */}
+          </div>
+          {isCompleted && <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 ml-2" />}
+          {!canAccess && exercise.isVip && <Lock className="h-5 w-5 text-[#ECA20C] flex-shrink-0 ml-2" />} {/* Only show lock for VIP exercises */}
+          {!canAccess && !exercise.isVip && !isCompleted && <Lock className="h-5 w-5 text-gray-500 flex-shrink-0 ml-2" />} {/* Added lock icon for future essential days */}
+        </div>
+
+        <div className="flex flex-wrap items-center justify-between gap-2 mt-3"> {/* Added flex-wrap and gap-2 */}
+          <Badge variant="secondary" className={`text-xs flex-shrink-0 ${ /* Added flex-shrink-0 */
+            exercise.phase === 'perda' ? 'bg-orange-500/20 text-orange-400' :
+            exercise.phase === 'definicao' ? 'bg-blue-500/20 text-blue-400' :
+            'bg-green-500/20 text-green-400'
+          }`}>
+            {phaseNames[exercise.phase]}
+          </Badge>
+
+          {canAccess ? (
+            <Button 
+              size="sm" 
+              onClick={() => {
+                setSelectedExercise(exercise)
+                setCurrentView('exercise')
+              }}
+              className={`text-xs px-3 py-1 flex-shrink-0 ${ /* Added flex-shrink-0 */
+                isNext ? 'bg-[#ECA20C] text-black hover:bg-[#ECA20C]/90' : 
+                'bg-gray-700 text-white hover:bg-gray-600'
+              }`}
+            >
+              {isCompleted ? 'Refazer' : isNext ? 'Começar' : 'Ver'}
+              <ChevronRight className="h-3 w-3 ml-1" />
+            </Button>
+          ) : (
+            // This button should only appear if it's a VIP exercise and the user is not VIP
+            exercise.isVip ? (
+              <Button 
+                size="sm" 
+                onClick={() => setCurrentView('vip')}
+                className="text-xs px-3 py-1 bg-gradient-to-r from-[#ECA20C] to-orange-500 text-black hover:from-[#ECA20C]/90 hover:to-orange-500/90 flex-shrink-0" /* Added flex-shrink-0 */
+              >
+                <Crown className="h-3 w-3 mr-1" />
+                VIP
+              </Button>
+            ) : (
+              // For locked essential days, show a disabled button
+              <Button 
+                size="sm" 
+                disabled
+                className="text-xs px-3 py-1 flex-shrink-0 bg-gray-700 text-gray-500 cursor-not-allowed"
+              >
+                <Lock className="h-3 w-3 mr-1" />
+                Bloqueado
+              </Button>
+            )
+          )}
+        </div>
+      </CardContent>
+    );
 
     return (
       <motion.div
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
-        <Card className={`bg-[#1A1A1A] border-gray-800 transition-all duration-300 ${
-          isCompleted ? 'border-green-500/50 bg-green-500/5' : 
-          !canAccess && exercise.isVip ? 'border-[#ECA20C]/30 opacity-60' : // Only apply VIP lock style if it's a VIP exercise
-          !canAccess ? 'border-gray-600 opacity-60' : // General lock style for non-VIP but inaccessible days (e.g., future days in a sequential program)
-          isNext ? 'border-[#ECA20C] shadow-lg shadow-[#ECA20C]/20' : ''
-        }`}>
-          <CardContent className="p-4">
-            <div className="flex items-start justify-between mb-3">
-              <div className="flex-1 min-w-0"> {/* Added min-w-0 to allow text wrapping */}
-                <h3 className="font-semibold text-white text-sm leading-tight mb-1 break-words">{exercise.title}</h3> {/* Added break-words */}
-                <p className="text-xs text-gray-400 mb-2">{exercise.duration}</p>
-                <p className="text-xs text-gray-300 leading-tight break-words">{exercise.description}</p> {/* Added break-words */}
-              </div>
-              {isCompleted && <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 ml-2" />}
-              {!canAccess && exercise.isVip && <Lock className="h-5 w-5 text-[#ECA20C] flex-shrink-0 ml-2" />} {/* Only show lock for VIP exercises */}
-            </div>
-
-            <div className="flex flex-wrap items-center justify-between gap-2 mt-3"> {/* Added flex-wrap and gap-2 */}
-              <Badge variant="secondary" className={`text-xs flex-shrink-0 ${ /* Added flex-shrink-0 */
-                exercise.phase === 'perda' ? 'bg-orange-500/20 text-orange-400' :
-                exercise.phase === 'definicao' ? 'bg-blue-500/20 text-blue-400' :
-                'bg-green-500/20 text-green-400'
+        {(!canAccess && !exercise.isVip && !isCompleted) ? ( // Apply tooltip only for locked essential days
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Card className={`bg-[#1A1A1A] border-gray-800 transition-all duration-300 ${
+                isCompleted ? 'border-green-500/50 bg-green-500/5' : 
+                !canAccess && exercise.isVip ? 'border-[#ECA20C]/30 opacity-60' : 
+                !canAccess ? 'border-gray-600 opacity-60' : // General lock style for non-VIP but inaccessible days
+                isNext ? 'border-[#ECA20C] shadow-lg shadow-[#ECA20C]/20' : ''
               }`}>
-                {phaseNames[exercise.phase]}
-              </Badge>
-
-              {canAccess ? (
-                <Button 
-                  size="sm" 
-                  onClick={() => {
-                    setSelectedExercise(exercise)
-                    setCurrentView('exercise')
-                  }}
-                  className={`text-xs px-3 py-1 flex-shrink-0 ${ /* Added flex-shrink-0 */
-                    isNext ? 'bg-[#ECA20C] text-black hover:bg-[#ECA20C]/90' : 
-                    'bg-gray-700 text-white hover:bg-gray-600'
-                  }`}
-                >
-                  {isCompleted ? 'Refazer' : isNext ? 'Começar' : 'Ver'}
-                  <ChevronRight className="h-3 w-3 ml-1" />
-                </Button>
-              ) : (
-                // This button should only appear if it's a VIP exercise and the user is not VIP
-                exercise.isVip && (
-                  <Button 
-                    size="sm" 
-                    onClick={() => setCurrentView('vip')}
-                    className="text-xs px-3 py-1 bg-gradient-to-r from-[#ECA20C] to-orange-500 text-black hover:from-[#ECA20C]/90 hover:to-orange-500/90 flex-shrink-0" /* Added flex-shrink-0 */
-                  >
-                    <Crown className="h-3 w-3 mr-1" />
-                    VIP
-                  </Button>
-                )
-              )}
-            </div>
-          </CardContent>
-        </Card>
+                {cardContent}
+              </Card>
+            </TooltipTrigger>
+            <TooltipContent className="bg-gray-900 text-white text-sm px-3 py-2 rounded-md shadow-lg">
+              <p>Complete o dia anterior para desbloquear este.</p>
+            </TooltipContent>
+          </Tooltip>
+        ) : (
+          <Card className={`bg-[#1A1A1A] border-gray-800 transition-all duration-300 ${
+            isCompleted ? 'border-green-500/50 bg-green-500/5' : 
+            !canAccess && exercise.isVip ? 'border-[#ECA20C]/30 opacity-60' : 
+            !canAccess ? 'border-gray-600 opacity-60' : // General lock style for non-VIP but inaccessible days
+            isNext ? 'border-[#ECA20C] shadow-lg shadow-[#ECA20C]/20' : ''
+          }`}>
+            {cardContent}
+          </Card>
+        )}
       </motion.div>
     )
   }
