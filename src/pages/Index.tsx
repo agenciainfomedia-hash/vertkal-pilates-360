@@ -867,7 +867,7 @@ export default function VertkalPilates360() {
               transition={{ delay: 0.5 }}
             >
               <Tabs defaultValue="todos" className="w-full">
-                <TabsList className="flex w-full overflow-x-auto whitespace-nowrap bg-[#1A1A1A] border border-gray-800 p-1"> {/* Changed to flex, overflow-x-auto, whitespace-nowrap, added p-1 */}
+                <TabsList className="flex w-full overflow-x-auto whitespace-nowrap bg-[#1A1A1A] border border-gray-800 p-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"> {/* Changed to flex, overflow-x-auto, whitespace-nowrap, added p-1 */}
                   <TabsTrigger value="todos" className="flex-shrink-0 px-4 py-2 data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black">Todos</TabsTrigger> {/* Added flex-shrink-0, px-4 py-2 */}
                   <TabsTrigger value="perda" className="flex-shrink-0 px-4 py-2 data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black">Perda</TabsTrigger> {/* Added flex-shrink-0, px-4 py-2 */}
                   <TabsTrigger value="definicao" className="flex-shrink-0 px-4 py-2 data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black">Definição</TabsTrigger> {/* Added flex-shrink-0, px-4 py-2 */}
