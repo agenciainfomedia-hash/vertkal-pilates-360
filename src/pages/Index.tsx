@@ -727,35 +727,35 @@ export default function VertkalPilates360() {
                 {authMode === 'login' ? 'Bem-vindo de volta!' : 'Comece sua jornada!'}
               </CardTitle>
             </CardHeader>
-            <CardContent className="p-6"> {/* Added padding to CardContent */}
+            <CardContent className="p-6">
               <form onSubmit={handleAuth} className="space-y-4">
                 {authMode === 'register' && (
                   <Input
                     placeholder="Seu nome incrível"
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="bg-black border-gray-700 focus:border-[#ECA20C] transition-colors rounded-lg px-4 py-2" // Added rounded-lg, px-4 py-2
+                    className="bg-black border-gray-700 focus:border-[#ECA20C] transition-colors rounded-lg px-4 py-2"
                   />
                 )}
                 <Input
                   type="email"
                   placeholder="Seu melhor email"
                   value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})} // Fixed formData spread
-                  className="bg-black border-gray-700 focus:border-[#ECA20C] transition-colors rounded-lg px-4 py-2" // Added rounded-lg, px-4 py-2
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  className="bg-black border-gray-700 focus:border-[#ECA20C] transition-colors rounded-lg px-4 py-2"
                   required
                 />
                 <Input
                   type="password"
                   placeholder="Senha segura"
                   value={formData.password}
-                  onChange={(e) => setFormData({...formData, password: e.target.value})} // Fixed formData spread
-                  className="bg-black border-gray-700 focus:border-[#ECA20C] transition-colors rounded-lg px-4 py-2" // Added rounded-lg, px-4 py-2
+                  onChange={(e) => setFormData({...formData, password: e.target.value})}
+                  className="bg-black border-gray-700 focus:border-[#ECA20C] transition-colors rounded-lg px-4 py-2"
                   required
                 />
                 <Button 
                   type="submit" 
-                  className="w-full bg-gradient-to-r from-[#ECA20C] to-orange-500 hover:from-[#ECA20C]/90 hover:to-orange-500/90 text-black font-bold py-3 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 rounded-lg" // Added rounded-lg
+                  className="w-full bg-gradient-to-r from-[#ECA20C] to-orange-500 hover:from-[#ECA20C]/90 hover:to-orange-500/90 text-black font-bold py-3 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 rounded-lg"
                 >
                   {authMode === 'login' ? 'Entrar e continuar' : 'Começar transformação!'}
                 </Button>
