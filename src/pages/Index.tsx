@@ -855,7 +855,7 @@ export default function VertkalPilates360() {
               </Card>
             </motion.div>
 
-            {/* Timeline Tabs */}
+            {/* Timeline Tabs (Essential Plan Exercises) */}
             <motion.div 
               initial={{ y: 50 }}
               animate={{ y: 0 }}
@@ -875,7 +875,7 @@ export default function VertkalPilates360() {
 
                 <TabsContent value="todos" className="mt-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {exercises.map((exercise) => (
+                    {exercises.filter(ex => !ex.isVip).map((exercise) => (
                       <ExerciseCard key={exercise.id} exercise={exercise} />
                     ))}
                   </div>
@@ -884,7 +884,7 @@ export default function VertkalPilates360() {
                 {Object.entries(phaseNames).map(([phase]) => (
                   <TabsContent key={phase} value={phase} className="mt-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                      {exercises.filter(ex => ex.phase === phase).map((exercise) => (
+                      {exercises.filter(ex => ex.phase === phase && !ex.isVip).map((exercise) => (
                         <ExerciseCard key={exercise.id} exercise={exercise} />
                       ))}
                     </div>
@@ -901,13 +901,61 @@ export default function VertkalPilates360() {
               </Tabs>
             </motion.div>
 
-            {/* VIP Banner */}
+            {/* NEW: Separate VIP Modules Section */}
+            {currentUser?.plan !== 'vip' && (
+              <motion.div
+                initial={{ y: 50 }}
+                animate={{ y: 0 }}
+                transition={{ delay: 0.7 }}
+                className="space-y-6 mt-8"
+              >
+                <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                  <Crown className="h-6 w-6 text-[#ECA20C]" />
+                  Módulos VIP Exclusivos
+                </h2>
+                <p className="text-gray-400 mb-4">Acelere seus resultados com treinos avançados e conteúdo premium.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {exercises.filter(ex => ex.isVip).map((exercise) => (
+                    <motion.div
+                      key={exercise.id}
+                      initial={{ scale: 0.9 }}
+                      animate={{ scale: 1 }}
+                      whileHover={{ scale: 1.02 }}
+                    >
+                      <Card className="bg-[#1A1A1A] border-[#ECA20C]/30 relative overflow-hidden">
+                        <div className="absolute top-4 right-4">
+                          <Lock className="h-6 w-6 text-[#ECA20C]" />
+                        </div>
+                        <CardContent className="p-6">
+                          <h3 className="font-semibold text-white text-lg mb-2 break-words">{exercise.title}</h3>
+                          <p className="text-gray-300 mb-4 break-words">{exercise.description}</p>
+                          <div className="flex items-center gap-2 text-sm text-gray-400">
+                            <Timer className="h-4 w-4" />
+                            <span>{exercise.duration}</span>
+                          </div>
+                          <Button
+                            size="sm"
+                            onClick={() => setCurrentView('vip')}
+                            className="mt-4 w-full bg-gradient-to-r from-[#ECA20C] to-orange-500 text-black hover:from-[#ECA20C]/90 hover:to-orange-500/90"
+                          >
+                            <Crown className="h-3 w-3 mr-1" />
+                            Desbloquear VIP
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {/* VIP Banner (Existing general call to action) */}
             {currentUser?.plan !== 'vip' && (
               <motion.div 
                 initial={{ scale: 0.95 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.6 }}
-                className="bg-gradient-to-r from-[#ECA20C]/20 to-orange-500/20 border border-[#ECA20C]/30 rounded-xl p-6 text-center"
+                className="bg-gradient-to-r from-[#ECA20C]/20 to-orange-500/20 border border-[#ECA20C]/30 rounded-xl p-6 text-center mt-8"
               >
                 <Crown className="h-12 w-12 text-[#ECA20C] mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2 break-words">Desbloqueie seu Potencial Máximo!</h3> {/* Added break-words */}
