@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
-import { DayPicker, CaptionProps, useDayPicker, DayPickerProps as ReactDayPickerProps, DayPickerContext, DropdownProps, CustomComponents } from "react-day-picker"
+import { DayPicker, CaptionProps, useDayPicker, DayPickerProps as ReactDayPickerProps, DropdownProps, CustomComponents } from "react-day-picker"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
@@ -11,6 +11,15 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 export type CalendarProps = ReactDayPickerProps & {
   showHead?: boolean;
 };
+
+// Define a local interface for the DayPicker context value
+interface CustomDayPickerContextValue {
+  goToMonth: (month: Date) => void;
+  selectedMonth?: Date;
+  // Add other properties from useDayPicker() if needed, e.g.,
+  // displayMonth: Date;
+  // setSelected: (date: Date | undefined) => void;
+}
 
 function Calendar({
   className,
@@ -43,8 +52,7 @@ function Calendar({
   };
 
   const CustomCaption = (captionProps: CaptionProps) => {
-    type DayPickerContextValueType = React.ContextType<typeof DayPickerContext>;
-    const { goToMonth, selectedMonth } = useDayPicker() as DayPickerContextValueType;
+    const { goToMonth, selectedMonth } = useDayPicker() as CustomDayPickerContextValue;
     const handleMonthChange = (value: string) => {
       const newDate = new Date(selectedMonth || new Date());
       newDate.setMonth(parseInt(value));
