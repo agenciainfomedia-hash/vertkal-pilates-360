@@ -30,7 +30,7 @@ import {
 } from 'lucide-react'
 import { achievements, checkAchievements } from '@/lib/achievements'
 import { exerciseDictionary } from '@/lib/exercises'
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip' // Import Tooltip components
+import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@/components/ui/tooltip'
 
 interface User {
   id: string
@@ -223,7 +223,7 @@ export default function VertkalPilates360() {
 
     // Find newly unlocked achievements
     const newlyUnlockedAchievements = newAchievementIds.filter(
-      (id) => !currentUser.achievements.includes(id)
+      (id: string) => !currentUser.achievements.includes(id)
     );
 
     const updatedUser = {
@@ -379,22 +379,24 @@ export default function VertkalPilates360() {
         className="relative"
       >
         {isNext && <div className="absolute -inset-0.5 bg-gradient-to-r from-[#ECA20C] to-orange-500 rounded-xl blur-md opacity-50 animate-pulse"></div>}
-        <Tooltip>
-          <TooltipTrigger asChild disabled={canAccess}>
-            <Card className={`${cardClasses} relative ${
-              isCompleted ? 'border-green-400/30' :
-              !canAccess ? 'opacity-60' :
-              isNext ? 'border-[#ECA20C]' : ''
-            }`}>
-              {cardContent}
-            </Card>
-          </TooltipTrigger>
-          {!canAccess && !exercise.isVip && (
-            <TooltipContent>
-              <p>Complete o dia anterior para desbloquear.</p>
-            </TooltipContent>
-          )}
-        </Tooltip>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild disabled={canAccess}>
+              <Card className={`${cardClasses} relative ${
+                isCompleted ? 'border-green-400/30' :
+                !canAccess ? 'opacity-60' :
+                isNext ? 'border-[#ECA20C]' : ''
+              }`}>
+                {cardContent}
+              </Card>
+            </TooltipTrigger>
+            {!canAccess && !exercise.isVip && (
+              <TooltipContent>
+                <p>Complete o dia anterior para desbloquear.</p>
+              </TooltipContent>
+            )}
+          </Tooltip>
+        </TooltipProvider>
       </motion.div>
     )
   }
@@ -503,7 +505,7 @@ export default function VertkalPilates360() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {achievements.map((achievement) => {
+          {achievements.map((achievement: any) => {
             const isUnlocked = currentUser?.achievements.includes(achievement.id)
             return (
               <motion.div
@@ -715,7 +717,7 @@ export default function VertkalPilates360() {
             layout
             className="bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-6 sm:p-8"
           >
-            <Tabs value={authMode} onValueChange={(value) => setAuthMode(value as 'login' | 'register')} className="w-full">
+            <Tabs value={authMode} onValueChange={(value: string) => setAuthMode(value as 'login' | 'register')} className="w-full">
               <TabsList className="grid w-full grid-cols-2 bg-white/5 mb-6 p-1 h-auto rounded-lg">
                 <TabsTrigger value="login" className="data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black data-[state=inactive]:hover:bg-white/10 transition-all duration-300 rounded-md h-10">Entrar</TabsTrigger>
                 <TabsTrigger value="register" className="data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black data-[state=inactive]:hover:bg-white/10 transition-all duration-300 rounded-md h-10">Criar Conta</TabsTrigger>
@@ -913,7 +915,7 @@ export default function VertkalPilates360() {
 
               <TabsContent value="dicionario" className="mt-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {exerciseDictionary.map((exercise) => (
+                  {exerciseDictionary.map((exercise: DictionaryExercise) => (
                     <DictionaryCard key={exercise.id} exercise={exercise} />
                   ))}
                 </div>
