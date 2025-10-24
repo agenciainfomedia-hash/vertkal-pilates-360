@@ -16,7 +16,8 @@ export type CalendarProps = ReactDayPickerProps & {
 interface CustomDayPickerContextValue {
   goToMonth: (month: Date) => void;
   selectedMonth?: Date;
-  // Add other properties from useDayPicker() if needed, e.g.,
+  // Add other properties from useDayPicker() if needed
+  // For example:
   // displayMonth: Date;
   // setSelected: (date: Date | undefined) => void;
 }
