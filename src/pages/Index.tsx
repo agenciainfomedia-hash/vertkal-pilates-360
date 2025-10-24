@@ -172,7 +172,7 @@ export default function VertkalPilates360() {
       id: 'vip-termogenese-natural',
       day: 25,
       title: 'Guia Completo da Termogênese Natural',
-      duration: '30 min',
+    duration: '30 min',
       description: 'Como fazer o corpo queimar gordura sozinho.',
       instructions: ['Introdução teórica 10 min', 'Exercícios práticos 15 min', 'Integração diária 5 min'],
       isVip: true,
@@ -707,7 +707,7 @@ export default function VertkalPilates360() {
         >
           <div className="text-center mb-8">
             <img
-              src="/logo.png"
+              src="/LOGO.png"
               onError={(e) => e.currentTarget.src = "https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo_TV_2015.svg"}
               alt="Vertkal Pilates 360° Logo"
               className="mx-auto mb-4 w-32 h-auto object-contain"
