@@ -296,7 +296,7 @@ export default function VertkalPilates360() {
   const getPhaseProgress = (phase: 'perda' | 'definicao' | 'consolidacao') => {
     if (!currentUser) return 0
     const phaseExercises = exercises.filter(ex => ex.phase === phase && !ex.isVip)
-    const completedInPhase = currentUser.progress.filter(day => {
+    const completedInPhase = currentUser.progress.filter((day: number) => {
       const exercise = exercises.find(ex => ex.day === day)
       return exercise?.phase === phase && !exercise?.isVip
     }).length
@@ -733,7 +733,7 @@ export default function VertkalPilates360() {
                   <Input
                     placeholder="Seu nome incrível"
                     value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, name: e.target.value})}
                     className="bg-black border-gray-700 focus:border-[#ECA20C] transition-colors rounded-lg px-4 py-2"
                   />
                 )}
@@ -741,7 +741,7 @@ export default function VertkalPilates360() {
                   type="email"
                   placeholder="Seu melhor email"
                   value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, email: e.target.value})}
                   className="bg-black border-gray-700 focus:border-[#ECA20C] transition-colors rounded-lg px-4 py-2"
                   required
                 />
@@ -749,7 +749,7 @@ export default function VertkalPilates360() {
                   type="password"
                   placeholder="Senha segura"
                   value={formData.password}
-                  onChange={(e) => setFormData({...formData, password: e.target.value})}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, password: e.target.value})}
                   className="bg-black border-gray-700 focus:border-[#ECA20C] transition-colors rounded-lg px-4 py-2"
                   required
                 />
