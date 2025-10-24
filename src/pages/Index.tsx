@@ -563,7 +563,7 @@ export default function VertkalPilates360() {
         </div>
 
         <Card className="bg-gradient-to-br from-[#ECA20C]/10 to-orange-500/10 border-[#ECA20C]/30">
-          <CardContent className="p-8 text-center">
+          <CardContent className="p-8 =text-center">
             <Crown className="h-16 w-16 text-[#ECA20C] mx-auto mb-6" />
             <h2 className="text-3xl font-bold text-white mb-4 break-words">Desbloqueie seu Potencial Máximo</h2> {/* Added break-words */}
             <p className="text-lg text-gray-300 mb-8 break-words">Acesse módulos exclusivos e acelere seus resultados com o plano VIP 360°</p> {/* Added break-words */}
@@ -707,6 +707,7 @@ export default function VertkalPilates360() {
         >
           <div className="text-center mb-8">
             <img
+              key={Date.now()} // Added key to force re-render
               src="/LOGO.png"
               onError={(e) => e.currentTarget.src = "https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo_TV_2015.svg"}
               alt="Vertkal Pilates 360° Logo"
