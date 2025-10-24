@@ -16,10 +16,6 @@ export type CalendarProps = ReactDayPickerProps & {
 interface CustomDayPickerContextValue {
   goToMonth: (month: Date) => void;
   selectedMonth?: Date;
-  // Add other properties from useDayPicker() if needed
-  // For example:
-  // displayMonth: Date;
-  // setSelected: (date: Date | undefined) => void;
 }
 
 function Calendar({
@@ -52,7 +48,7 @@ function Calendar({
     );
   };
 
-  const CustomCaption = (captionProps: CaptionProps) => {
+  const CustomCaption = (_captionProps: CaptionProps) => {
     const { goToMonth, selectedMonth } = useDayPicker() as CustomDayPickerContextValue;
     const handleMonthChange = (value: string) => {
       const newDate = new Date(selectedMonth || new Date());
