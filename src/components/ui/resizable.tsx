@@ -11,7 +11,7 @@ const ResizablePanelComponent = Panel
 
 const ResizableHandleComponent = React.forwardRef<
   React.ElementRef<typeof PanelResizeHandle>,
-  PanelResizeHandleProps & {
+  React.ComponentPropsWithoutRef<typeof PanelResizeHandle> & {
     withHandle?: boolean
   }
 >(({ withHandle, className, ...props }, ref) => (

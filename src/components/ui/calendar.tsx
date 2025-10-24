@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
-import { DayPicker, CaptionProps, useDayPicker, DayPickerProps as ReactDayPickerProps, DayPickerContextValue, DropdownProps, CustomComponents } from "react-day-picker"
+import { DayPicker, CaptionProps, useDayPicker, DayPickerProps as ReactDayPickerProps, DayPickerContext, DropdownProps, CustomComponents } from "react-day-picker"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
@@ -43,7 +43,7 @@ function Calendar({
   };
 
   const CustomCaption = (captionProps: CaptionProps) => {
-    const { goToMonth, selectedMonth } = useDayPicker() as DayPickerContextValue;
+    const { goToMonth, selectedMonth } = useDayPicker() as DayPickerContext<ReactDayPickerProps>;
     const handleMonthChange = (value: string) => {
       const newDate = new Date(selectedMonth || new Date());
       newDate.setMonth(parseInt(value));
