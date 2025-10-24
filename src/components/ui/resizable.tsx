@@ -10,7 +10,7 @@ const ResizablePanelGroupComponent = PanelGroup
 const ResizablePanelComponent = Panel
 
 const ResizableHandleComponent = React.forwardRef<
-  HTMLDivElement, // Corrected ref type to HTMLDivElement
+  React.ElementRef<typeof PanelResizeHandle>,
   PanelResizeHandleProps & {
     withHandle?: boolean
   }
