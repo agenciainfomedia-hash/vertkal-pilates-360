@@ -699,83 +699,86 @@ export default function VertkalPilates360() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center p-4">
+      <div className="min-h-screen w-full bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white flex items-center justify-center p-4">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="w-full max-w-md"
         >
           <div className="text-center mb-8">
             <img
-              key={Date.now()} // Added key to force re-render
-              src="/LOGO.png"
-              onError={(e) => e.currentTarget.src = "https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo_TV_2015.svg"}
+              src="/logo.png"
               alt="Vertkal Pilates 360° Logo"
-              className="mx-auto mb-4 w-32 h-auto object-contain"
+              className="mx-auto mb-4 w-24 h-auto"
             />
-            <motion.p
-              className="text-gray-300 mt-4 text-lg font-medium"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-            >
-              Transforme seu corpo em 21 dias
-            </motion.p>
+            <h1 className="text-3xl font-bold text-white tracking-tight">
+              {authMode === 'login' ? 'Bem-vindo de volta!' : 'Comece sua Jornada'}
+            </h1>
+            <p className="text-gray-400 mt-2">
+              Transforme seu corpo em 21 dias.
+            </p>
           </div>
 
-          <Card className="bg-[#1A1A1A] border-gray-800 shadow-2xl">
-            <CardHeader>
-              <CardTitle className="text-center text-xl">
-                {authMode === 'login' ? 'Bem-vindo de volta!' : 'Comece sua jornada!'}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-6">
+          <motion.div
+            layout
+            className="bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-6 sm:p-8"
+          >
+            <Tabs value={authMode} onValueChange={(value) => setAuthMode(value as 'login' | 'register')} className="w-full">
+              <TabsList className="grid w-full grid-cols-2 bg-white/5 mb-6 p-1 h-auto rounded-lg">
+                <TabsTrigger value="login" className="data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black data-[state=inactive]:hover:bg-white/10 transition-all duration-300 rounded-md h-10">Entrar</TabsTrigger>
+                <TabsTrigger value="register" className="data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black data-[state=inactive]:hover:bg-white/10 transition-all duration-300 rounded-md h-10">Criar Conta</TabsTrigger>
+              </TabsList>
+              
               <form onSubmit={handleAuth} className="space-y-4">
-                {authMode === 'register' && (
-                  <Input
-                    placeholder="Seu nome incrível"
-                    value={formData.name}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, name: e.target.value})}
-                    className="bg-black border-gray-700 focus:border-[#ECA20C] transition-colors rounded-lg px-4 py-2"
-                  />
-                )}
-                <Input
-                  type="email"
-                  placeholder="Seu melhor email"
-                  value={formData.email}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, email: e.target.value})}
-                  className="bg-black border-gray-700 focus:border-[#ECA20C] transition-colors rounded-lg px-4 py-2"
-                  required
-                />
-                <Input
-                  type="password"
-                  placeholder="Senha segura"
-                  value={formData.password}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, password: e.target.value})}
-                  className="bg-black border-gray-700 focus:border-[#ECA20C] transition-colors rounded-lg px-4 py-2"
-                  required
-                />
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={authMode}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="space-y-4"
+                  >
+                    {authMode === 'register' && (
+                      <Input
+                        placeholder="Seu nome"
+                        value={formData.name}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, name: e.target.value})}
+                        className="bg-white/5 border-white/20 focus:border-[#ECA20C] h-12"
+                      />
+                    )}
+                    <Input
+                      type="email"
+                      placeholder="Seu melhor email"
+                      value={formData.email}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, email: e.target.value})}
+                      className="bg-white/5 border-white/20 focus:border-[#ECA20C] h-12"
+                      required
+                    />
+                    <Input
+                      type="password"
+                      placeholder="Senha segura"
+                      value={formData.password}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, password: e.target.value})}
+                      className="bg-white/5 border-white/20 focus:border-[#ECA20C] h-12"
+                      required
+                    />
+                  </motion.div>
+                </AnimatePresence>
+
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-[#ECA20C] to-orange-500 hover:from-[#ECA20C]/90 hover:to-orange-500/90 text-black font-bold py-3 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 rounded-lg"
+                  className="w-full bg-gradient-to-r from-[#ECA20C] to-orange-500 hover:from-[#ECA20C]/90 hover:to-orange-500/90 text-black font-bold h-12 text-base shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 rounded-lg"
                 >
-                  {authMode === 'login' ? 'Entrar e continuar' : 'Começar transformação!'}
+                  {authMode === 'login' ? 'Continuar' : 'Criar conta e começar'}
                 </Button>
               </form>
-
-              <div className="text-center mt-6">
-                <button
-                  onClick={() => setAuthMode(authMode === 'login' ? 'register' : 'login')}
-                  className="text-[#ECA20C] hover:text-orange-400 transition-colors font-medium"
-                >
-                  {authMode === 'login' ? 'Não tem conta? Crie agora!' : 'Já tem conta? Entre aqui!'}
-                </button>
-              </div>
-            </CardContent>
-          </Card>
+            </Tabs>
+          </motion.div>
         </motion.div>
       </div>
-    )
+    );
   }
 
   return (
