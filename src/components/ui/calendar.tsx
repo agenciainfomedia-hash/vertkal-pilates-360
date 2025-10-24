@@ -43,7 +43,8 @@ function Calendar({
   };
 
   const CustomCaption = (captionProps: CaptionProps) => {
-    const { goToMonth, selectedMonth } = useDayPicker() as DayPickerContext<ReactDayPickerProps>;
+    type DayPickerContextValueType = React.ContextType<typeof DayPickerContext>;
+    const { goToMonth, selectedMonth } = useDayPicker() as DayPickerContextValueType;
     const handleMonthChange = (value: string) => {
       const newDate = new Date(selectedMonth || new Date());
       newDate.setMonth(parseInt(value));
