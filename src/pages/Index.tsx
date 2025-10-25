@@ -204,10 +204,10 @@ export default function VertkalPilates360() {
     setCurrentView('dashboard')
   }
 
-  const completeExercise = (exerciseId: string) => {
+  const completeExercise = (exercise: Exercise) => {
     if (!currentUser) return
 
-    const dayNumber = parseInt(exerciseId.split('-')[1]);
+    const dayNumber = exercise.day;
     // Ensure progress only contains unique day numbers and is sorted
     const updatedProgress = Array.from(new Set([...currentUser.progress, dayNumber])).sort((a, b) => a - b);
 
@@ -972,7 +972,7 @@ export default function VertkalPilates360() {
         )}
 
         {currentView === 'exercise' && selectedExercise && (
-          <ExerciseView exercise={selectedExercise} onComplete={() => completeExercise(selectedExercise.id)} onBack={() => setCurrentView('dashboard')} />
+          <ExerciseView exercise={selectedExercise} onComplete={() => completeExercise(selectedExercise)} onBack={() => setCurrentView('dashboard')} />
         )}
 
         {currentView === 'achievements' && (
