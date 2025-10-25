@@ -1,7 +1,7 @@
-import Index from './pages/Index'
+import HelloWorld from './pages/HelloWorld';
 
 function App() {
-  return <Index />
+  return <HelloWorld />;
 }
 
-export default App
+export default App;
