@@ -658,39 +658,37 @@ export default function VertkalPilates360() {
               </div>
             </div>
 
-            <div className="space-y-4">
-              <Button
-                onClick={() => setCurrentView('achievements')}
-                variant="outline"
-                className="w-full justify-start border-white/20 text-white hover:bg-white/10"
-              >
-                <Trophy className="h-5 w-5 mr-3" />
-                Ver Conquistas
-              </Button>
+            <Button
+              onClick={() => setCurrentView('achievements')}
+              variant="outline"
+              className="w-full justify-start border-white/20 text-white hover:bg-white/10"
+            >
+              <Trophy className="h-5 w-5 mr-3" />
+              Ver Conquistas
+            </Button>
 
-              {currentUser?.plan !== 'vip' && (
-                <Button
-                  onClick={() => setCurrentView('vip')}
-                  className="w-full bg-gradient-to-r from-[#ECA20C] to-orange-500 hover:from-[#ECA20C]/90 hover:to-orange-500/90 text-black font-bold"
-                >
-                  <Crown className="h-5 w-5 mr-3" />
-                  Upgrade para VIP
-                </Button>
-              )}
-
+            {currentUser?.plan !== 'vip' && (
               <Button
-                onClick={() => {
-                  setCurrentUser(null)
-                  setIsAuthenticated(false)
-                  setCurrentView('dashboard')
-                }}
-                variant="outline"
-                className="w-full justify-start border-red-500/50 text-red-400 hover:bg-red-500/10 hover:text-red-300"
+                onClick={() => setCurrentView('vip')}
+                className="w-full bg-gradient-to-r from-[#ECA20C] to-orange-500 hover:from-[#ECA20C]/90 hover:to-orange-500/90 text-black font-bold"
               >
-                <LogOut className="h-5 w-5 mr-3" />
-                Sair
+                <Crown className="h-5 w-5 mr-3" />
+                Upgrade para VIP
               </Button>
-            </div>
+            )}
+
+            <Button
+              onClick={() => {
+                setCurrentUser(null)
+                setIsAuthenticated(false)
+                setCurrentView('dashboard')
+              }}
+              variant="outline"
+              className="w-full justify-start border-red-500/50 text-red-400 hover:bg-red-500/10 hover:text-red-300"
+            >
+              <LogOut className="h-5 w-5 mr-3" />
+              Sair
+            </Button>
           </CardContent>
         </Card>
       </motion.div>
@@ -708,7 +706,7 @@ export default function VertkalPilates360() {
         >
           <div className="text-center mb-8">
             <img
-              src="/logo-horizontal.png"
+              src="/LOGO.png" // Changed from /logo-horizontal.png to /LOGO.png
               alt="Vertkal Pilates 360° Logo"
               className="mx-auto mb-4 w-48 h-auto"
             />
