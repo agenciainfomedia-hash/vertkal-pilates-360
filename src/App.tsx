@@ -1,7 +1,7 @@
-import HelloWorld from './pages/HelloWorld';
+import VertkalPilates360 from './pages/Index';
 
 function App() {
-  return <HelloWorld />;
+  return <VertkalPilates360 />;
 }
 
 export default App;
