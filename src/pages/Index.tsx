@@ -296,6 +296,9 @@ export default function VertkalPilates360() {
   const getPhaseProgress = (phase: 'perda' | 'definicao' | 'consolidacao') => {
     if (!currentUser) return 0
     const phaseExercises = exercises.filter(ex => ex.phase === phase && !ex.isVip)
+    if (phaseExercises.length === 0) {
+      return 0
+    }
     const completedInPhase = currentUser.progress.filter((day: number) => {
       const exercise = exercises.find(ex => ex.day === day)
       return exercise?.phase === phase && !exercise?.isVip
