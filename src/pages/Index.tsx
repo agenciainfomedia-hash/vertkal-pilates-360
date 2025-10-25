@@ -205,39 +205,43 @@ export default function VertkalPilates360() {
   }
 
   const completeExercise = (exercise: Exercise) => {
-    if (!currentUser) return
+    if (!currentUser) {
+      console.error("Cannot complete exercise: currentUser is null.");
+      return;
+    }
+
+    // Defensive checks, though types suggest these should always be arrays
+    const currentProgress = currentUser.progress || [];
+    const currentAchievements = currentUser.achievements || [];
 
     const dayNumber = exercise.day;
-    // Ensure progress only contains unique day numbers and is sorted
-    const updatedProgress = Array.from(new Set([...currentUser.progress, dayNumber])).sort((a, b) => a - b);
+    const updatedProgress = Array.from(new Set([...currentProgress, dayNumber])).sort((a, b) => a - b);
 
     const currentStreak = calculateStreak(updatedProgress);
     const isVIP = currentUser.plan === 'vip';
 
     const newAchievementIds = checkAchievements({
-      completedDays: updatedProgress, // Pass the array of completed days
+      completedDays: updatedProgress,
       currentStreak: currentStreak,
       isVIP: isVIP,
-      completedChallenges: [] // Placeholder for now
+      completedChallenges: []
     });
 
-    // Find newly unlocked achievements
     const newlyUnlockedAchievements = newAchievementIds.filter(
-      (id: string) => !currentUser.achievements.includes(id)
+      (id: string) => !currentAchievements.includes(id)
     );
 
     const updatedUser = {
       ...currentUser,
       progress: updatedProgress,
-      achievements: newAchievementIds, // Update with all unlocked achievement IDs
+      achievements: newAchievementIds,
       points: currentUser.points + 10,
-      completedDays: updatedProgress.length, // This is now accurate
+      completedDays: updatedProgress.length,
       streak: currentStreak
     }
 
     setCurrentUser(updatedUser)
 
-    // Check for new achievements to display celebration
     if (newlyUnlockedAchievements.length > 0) {
       const latestAchievementId = newlyUnlockedAchievements[newlyUnlockedAchievements.length - 1];
       const achievement = achievements.find(a => a.id === latestAchievementId);
