@@ -4,7 +4,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'; // Removed TabsContent
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface AuthScreenProps {
   authMode: 'login' | 'register';
