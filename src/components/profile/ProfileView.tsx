@@ -76,7 +76,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({
           <Button
             onClick={() => setCurrentView('achievements')}
             variant="outline"
-            className="w-full justify-start border-white/20 text-white hover:bg-white/10"
+            className="w-full justify-start bg-white text-black hover:bg-gray-100 mb-4"
           >
             <Trophy className="h-5 w-5 mr-3" />
             Ver Conquistas
@@ -85,7 +85,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({
           {currentUser?.plan !== 'vip' && (
             <Button
               onClick={() => setCurrentView('vip')}
-              className="w-full bg-gradient-to-r from-[#ECA20C] to-orange-500 hover:from-[#ECA20C]/90 hover:to-orange-500/90 text-white font-bold"
+              className="w-full bg-gradient-to-r from-[#ECA20C] to-orange-500 hover:from-[#ECA20C]/90 hover:to-orange-500/90 text-white font-bold mb-4"
             >
               <Crown className="h-5 w-5 mr-3" />
               Upgrade para VIP
@@ -99,7 +99,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({
               setCurrentView('dashboard');
             }}
             variant="outline"
-            className="w-full justify-start border-red-500/50 text-red-400 hover:bg-red-500/10 hover:text-red-300"
+            className="w-full justify-start bg-white text-red-400 hover:bg-gray-100 hover:text-red-300"
           >
             <LogOut className="h-5 w-5 mr-3" />
             Sair
