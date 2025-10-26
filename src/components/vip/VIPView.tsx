@@ -45,7 +45,7 @@ const VIPView: React.FC<VIPViewProps> = ({ onBack, exercises }) => {
         <h1 className="text-2xl font-bold text-white">VIP 360°</h1>
       </div>
 
-      <Card className="bg-gradient-to-br from-[#ECA20C]/10 to-orange-500/10 border-[#ECA20C]/30 rounded-xl">
+      <Card className="bg-gray-900/50 backdrop-blur-sm border-[#ECA20C]/30 rounded-xl">
         <CardContent className="p-8 text-center">
           <Crown className="h-16 w-16 text-[#ECA20C] mx-auto mb-6" />
           <h2 className="text-3xl font-bold text-white mb-4 break-words">Desbloqueie seu Potencial Máximo</h2>
