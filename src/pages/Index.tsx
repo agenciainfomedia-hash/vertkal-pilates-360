@@ -379,7 +379,7 @@ export default function VertkalPilates360() {
                 className="space-y-6 mt-24"
               >
                 <h2 className="text-2xl font-bold text-white flex items-center gap-2 justify-center">
-                  <Crown className="h-6 w-6 text-vipPurple" /> {/* Changed to text-vipPurple */}
+                  <Crown className="h-6 w-6 text-vipPurple" />
                   Módulos VIP Exclusivos
                 </h2>
                 <p className="text-white mb-16 text-center">Acelere seus resultados com treinos avançados e conteúdo premium.</p>
@@ -390,9 +390,9 @@ export default function VertkalPilates360() {
                       whileHover={{ scale: 1.03, y: -5 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <Card className="bg-gray-900/50 backdrop-blur-sm border border-vipPurple/50 rounded-xl relative overflow-hidden h-full"> {/* Changed to border-vipPurple/50 */}
+                      <Card className="bg-gray-900/50 backdrop-blur-sm border border-vipPurple/50 rounded-xl relative overflow-hidden h-full shadow-lg shadow-vipPurple/30"> {/* Adicionado shadow-lg shadow-vipPurple/30 */}
                         <div className="absolute top-4 right-4">
-                          <Lock className="h-6 w-6 text-vipPurple" /> {/* Changed to text-vipPurple */}
+                          <Lock className="h-6 w-6 text-vipPurple" />
                         </div>
                         <CardContent className="p-6 flex flex-col h-full">
                           <h3 className="font-semibold text-white text-lg mb-2 break-words">{exercise.title}</h3>
@@ -404,7 +404,7 @@ export default function VertkalPilates360() {
                           <Button
                             size="sm"
                             onClick={() => setCurrentView('vip')}
-                            className="mt-auto w-full bg-gradient-to-r from-vipPurple-dark to-vipPurple-light text-white hover:from-vipPurple-dark/90 hover:to-vipPurple-light/90" /* Changed to purple gradient */
+                            className="mt-auto w-full bg-gradient-to-r from-vipPurple-dark to-vipPurple-light text-white hover:from-vipPurple-dark/90 hover:to-vipPurple-light/90"
                           >
                             <Crown className="h-3 w-3 mr-1" />
                             Desbloquear VIP
