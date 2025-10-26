@@ -389,8 +389,11 @@ export default function VertkalPilates360() {
                       key={exercise.id}
                       whileHover={{ scale: 1.03, y: -5 }}
                       whileTap={{ scale: 0.98 }}
+                      className="relative" // Adicionado para posicionar o brilho
                     >
-                      <Card className="bg-gray-900/50 backdrop-blur-sm border border-vipPurple/50 rounded-xl relative overflow-hidden h-full shadow-lg shadow-vipPurple/30"> {/* Adicionado shadow-lg shadow-vipPurple/30 */}
+                      {/* Div para o efeito de brilho neon */}
+                      <div className="absolute inset-0 bg-vipPurple/30 rounded-xl blur-lg opacity-70 z-0"></div>
+                      <Card className="bg-gray-900/50 backdrop-blur-sm border border-vipPurple/50 rounded-xl relative overflow-hidden h-full z-10"> {/* Adicionado z-10 para o card ficar acima do brilho */}
                         <div className="absolute top-4 right-4">
                           <Lock className="h-6 w-6 text-vipPurple" />
                         </div>
