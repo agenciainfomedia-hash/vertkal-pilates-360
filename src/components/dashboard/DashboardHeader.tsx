@@ -30,7 +30,7 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({ currentUser, setCurre
       className="bg-black/30 backdrop-blur-lg border-b border-white/10 p-4 sticky top-0 z-50"
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between">
-        <img src="https://i.ibb.co/KzSJqVnk/Logo-Horizontal.png" alt="Vertkal Pilates 360° Logo" className="h-8 w-auto" />
+        <img src="https://i.ibb.co/KzSJqVnk/Logo-Horizontal.png" alt="Vertkal Pilates 360° Logo" className="h-[31px] w-auto" />
         <div className="flex items-center gap-4">
           <motion.div
             className="text-right flex-1 min-w-0"
