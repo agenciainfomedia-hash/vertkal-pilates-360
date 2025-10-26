@@ -382,7 +382,7 @@ export default function VertkalPilates360() {
                   <Crown className="h-6 w-6 text-[#ECA20C]" />
                   Módulos VIP Exclusivos
                 </h2>
-                <p className="text-white mb-32 text-center">Acelere seus resultados com treinos avançados e conteúdo premium.</p> {/* Increased margin-bottom from mb-24 to mb-32 */}
+                <p className="text-white mb-40 text-center">Acelere seus resultados com treinos avançados e conteúdo premium.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {exercises.filter(ex => ex.isVip).map((exercise) => (
                     <motion.div
