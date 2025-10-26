@@ -50,13 +50,13 @@ const ProfileView: React.FC<ProfileViewProps> = ({
       <Card className="bg-gray-900/50 backdrop-blur-sm border border-white/10 rounded-xl">
         <CardContent className="p-6">
           <div className="flex items-center gap-6 mb-6">
-            <div className="w-20 h-20 bg-[#ECA20C] rounded-full flex items-center justify-center flex-shrink-0">
+            <div className="w-20 h-20 bg-vipPurple rounded-full flex items-center justify-center flex-shrink-0"> {/* Changed to bg-vipPurple */}
               <UserIcon className="h-10 w-10 text-white" />
             </div>
             <div className="flex-1 min-w-0">
               <h2 className="text-2xl font-bold text-white break-words">{currentUser?.name}</h2>
               <p className="text-white break-words">{currentUser?.email}</p>
-              <Badge className={`mt-2 ${currentUser?.plan === 'vip' ? 'bg-[#ECA20C] text-white' : 'bg-white/10 text-white'}`}>
+              <Badge className={`mt-2 ${currentUser?.plan === 'vip' ? 'bg-vipPurple text-white' : 'bg-white/10 text-white'}`}> {/* Changed to bg-vipPurple */}
                 {currentUser?.plan === 'vip' ? 'VIP 360°' : 'Plano Essencial'}
               </Badge>
             </div>
@@ -64,7 +64,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({
 
           <div className="grid grid-cols-2 gap-4 mb-6">
             <div className="text-center p-4 bg-black/20 rounded-lg">
-              <div className="text-2xl font-bold text-[#ECA20C]">{currentUser?.points || 0}</div>
+              <div className="text-2xl font-bold text-vipPurple">{currentUser?.points || 0}</div> {/* Changed to text-vipPurple */}
               <div className="text-sm text-white">Pontos</div>
             </div>
             <div className="text-center p-4 bg-black/20 rounded-lg">
@@ -85,7 +85,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({
           {currentUser?.plan !== 'vip' && (
             <Button
               onClick={() => setCurrentView('vip')}
-              className="w-full bg-gradient-to-r from-[#ECA20C] to-orange-500 hover:from-[#ECA20C]/90 hover:to-orange-500/90 text-white font-bold mb-4"
+              className="w-full bg-gradient-to-r from-vipPurple-dark to-vipPurple-light hover:from-vipPurple-dark/90 hover:to-vipPurple-light/90 text-white font-bold mb-4" /* Changed to purple gradient */
             >
               <Crown className="h-5 w-5 mr-3" />
               Upgrade para VIP

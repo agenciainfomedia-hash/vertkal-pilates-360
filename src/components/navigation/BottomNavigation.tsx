@@ -35,8 +35,8 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({ currentView, setCur
         <Button
           variant="ghost"
           onClick={() => setCurrentView('vip')}
-          className={`rounded-full w-16 h-12 transition-colors ${currentView === 'vip' ? 'bg-[#ECA20C] text-white' : 'text-white hover:text-white'}`}
-        >
+          className={`rounded-full w-16 h-12 transition-colors ${currentView === 'vip' ? 'bg-vipPurple text-white' : 'text-white hover:text-white'}`}
+        > {/* Changed to bg-vipPurple */}
           <Crown className="h-5 w-5" />
         </Button>
       </div>
