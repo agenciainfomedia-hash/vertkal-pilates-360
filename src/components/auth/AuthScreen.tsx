@@ -38,7 +38,7 @@ const AuthScreen: React.FC<AuthScreenProps> = ({
           <h1 className="text-3xl font-bold text-white tracking-tight">
             {authMode === 'login' ? 'Bem-vindo de volta!' : 'Comece sua Jornada'}
           </h1>
-          <p className="text-gray-400 mt-2">
+          <p className="text-white mt-2">
             Transforme seu corpo em 21 dias.
           </p>
         </div>

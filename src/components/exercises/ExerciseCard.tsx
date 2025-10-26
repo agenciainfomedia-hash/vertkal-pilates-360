@@ -58,11 +58,11 @@ const ExerciseCard: React.FC<ExerciseCardProps> = ({
       <div className="flex items-start justify-between mb-3">
         <div className="flex-1 min-w-0">
           <h3 className="font-semibold text-white text-sm leading-tight mb-1 break-words">{exercise.title}</h3>
-          <p className="text-xs text-gray-400 mb-2">{exercise.duration}</p>
-          <p className="text-xs text-gray-300 leading-tight break-words">{exercise.description}</p>
+          <p className="text-xs text-white mb-2">{exercise.duration}</p>
+          <p className="text-xs text-white leading-tight break-words">{exercise.description}</p>
         </div>
         {isCompleted && <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 ml-2" />}
-        {!canAccess && <Lock className={`h-5 w-5 flex-shrink-0 ml-2 ${exercise.isVip ? 'text-[#ECA20C]' : 'text-gray-500'}`} />}
+        {!canAccess && <Lock className={`h-5 w-5 flex-shrink-0 ml-2 ${exercise.isVip ? 'text-[#ECA20C]' : 'text-white'}`} />}
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-2 mt-3">
@@ -82,7 +82,7 @@ const ExerciseCard: React.FC<ExerciseCardProps> = ({
               setCurrentView('exercise');
             }}
             className={`text-xs px-3 py-1 flex-shrink-0 ${
-              isNext ? 'bg-[#ECA20C] text-black hover:bg-[#ECA20C]/90' :
+              isNext ? 'bg-[#ECA20C] text-white hover:bg-[#ECA20C]/90' :
               'bg-white/10 text-white hover:bg-white/20'
             }`}
           >
@@ -94,7 +94,7 @@ const ExerciseCard: React.FC<ExerciseCardProps> = ({
             <Button
               size="sm"
               onClick={() => setCurrentView('vip')}
-              className="text-xs px-3 py-1 bg-gradient-to-r from-[#ECA20C] to-orange-500 text-black hover:from-[#ECA20C]/90 hover:to-orange-500/90 flex-shrink-0"
+              className="text-xs px-3 py-1 bg-gradient-to-r from-[#ECA20C] to-orange-500 text-white hover:from-[#ECA20C]/90 hover:to-orange-500/90 flex-shrink-0"
             >
               <Crown className="h-3 w-3 mr-1" />
               VIP
@@ -103,7 +103,7 @@ const ExerciseCard: React.FC<ExerciseCardProps> = ({
             <Button
               size="sm"
               disabled
-              className="text-xs px-3 py-1 flex-shrink-0 bg-white/5 text-gray-500 cursor-not-allowed"
+              className="text-xs px-3 py-1 flex-shrink-0 bg-white/5 text-white cursor-not-allowed"
             >
               <Lock className="h-3 w-3 mr-1" />
               Bloqueado

@@ -48,7 +48,7 @@ const PhaseProgressSection: React.FC<PhaseProgressSectionProps> = ({ getPhasePro
         <div className="space-y-4">
           {Object.entries(phaseNames).map(([phase]) => (
             <div key={phase} className="flex items-center gap-4">
-              <div className="w-24 text-sm text-gray-400 flex-shrink-0">{phaseNames[phase as keyof typeof phaseNames]}</div>
+              <div className="w-24 text-sm text-white flex-shrink-0">{phaseNames[phase as keyof typeof phaseNames]}</div>
               <div className="flex-1">
                 <Progress value={getPhaseProgress(phase as any)} className="h-2 [&>div]:bg-gradient-to-r [&>div]:from-[#ECA20C] [&>div]:to-orange-500" />
               </div>

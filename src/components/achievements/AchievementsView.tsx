@@ -33,7 +33,7 @@ const AchievementsView: React.FC<AchievementsViewProps> = ({ currentUser, onBack
       className="space-y-6"
     >
       <div className="flex items-center gap-4">
-        <Button variant="ghost" onClick={onBack} className="text-gray-400 hover:text-white">
+        <Button variant="ghost" onClick={onBack} className="text-white hover:text-white">
           ← Voltar
         </Button>
         <h1 className="text-2xl font-bold text-white">Conquistas</h1>
@@ -54,14 +54,14 @@ const AchievementsView: React.FC<AchievementsViewProps> = ({ currentUser, onBack
               }`}>
                 <CardContent className="p-6 text-center">
                   <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${
-                    isUnlocked ? 'bg-yellow-500 text-black' : 'bg-gray-700 text-gray-500'
+                    isUnlocked ? 'bg-yellow-500 text-white' : 'bg-gray-700 text-white'
                   }`}>
                     <achievement.icon className="h-8 w-8" />
                   </div>
                   <h3 className="font-semibold text-white mb-2 break-words">{achievement.title}</h3>
-                  <p className="text-sm text-gray-400 mb-4 break-words">{achievement.description}</p>
+                  <p className="text-sm text-white mb-4 break-words">{achievement.description}</p>
                   {isUnlocked && (
-                    <Badge className="bg-yellow-500 text-black">
+                    <Badge className="bg-yellow-500 text-white">
                       <Trophy className="h-3 w-3 mr-1" />
                       Desbloqueada
                     </Badge>

@@ -31,7 +31,7 @@ const ProgressOverview: React.FC<ProgressOverviewProps> = ({ currentUser, getPro
             <Target className="h-8 w-8 text-[#ECA20C]" />
             <span className="text-3xl font-bold text-white">{getProgressPercentage()}%</span>
           </div>
-          <p className="text-sm text-gray-400 mb-2">Progresso Geral</p>
+          <p className="text-sm text-white mb-2">Progresso Geral</p>
           <Progress value={getProgressPercentage()} className="h-2 [&>div]:bg-gradient-to-r [&>div]:from-[#ECA20C] [&>div]:to-orange-500" />
         </CardContent>
       </Card>
@@ -42,8 +42,8 @@ const ProgressOverview: React.FC<ProgressOverviewProps> = ({ currentUser, getPro
             <Flame className="h-8 w-8 text-orange-500" />
             <span className="text-3xl font-bold text-white">{currentUser?.streak || 0}</span>
           </div>
-          <p className="text-sm text-gray-400">Sequência Atual</p>
-          <p className="text-xs text-gray-500 mt-1">dias consecutivos</p>
+          <p className="text-sm text-white">Sequência Atual</p>
+          <p className="text-xs text-white mt-1">dias consecutivos</p>
         </CardContent>
       </Card>
 
@@ -53,8 +53,8 @@ const ProgressOverview: React.FC<ProgressOverviewProps> = ({ currentUser, getPro
             <Award className="h-8 w-8 text-yellow-500" />
             <span className="text-3xl font-bold text-white">{currentUser?.achievements.length || 0}</span>
           </div>
-          <p className="text-sm text-gray-400">Conquistas</p>
-          <p className="text-xs text-gray-500 mt-1">desbloqueadas</p>
+          <p className="text-sm text-white">Conquistas</p>
+          <p className="text-xs text-white mt-1">desbloqueadas</p>
         </CardContent>
       </Card>
     </div>

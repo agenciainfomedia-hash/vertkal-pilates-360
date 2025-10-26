@@ -319,11 +319,11 @@ export default function VertkalPilates360() {
             {/* Timeline Tabs */}
             <Tabs defaultValue="todos" className="w-full">
               <TabsList className="flex w-full overflow-x-auto whitespace-nowrap bg-black/30 border border-white/10 p-1 rounded-lg [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                <TabsTrigger value="todos" className="flex-shrink-0 px-4 py-2 data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black rounded-md">Todos</TabsTrigger>
-                <TabsTrigger value="perda" className="flex-shrink-0 px-4 py-2 data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black rounded-md">Perda</TabsTrigger>
-                <TabsTrigger value="definicao" className="flex-shrink-0 px-4 py-2 data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black rounded-md">Definição</TabsTrigger>
-                <TabsTrigger value="consolidacao" className="flex-shrink-0 px-4 py-2 data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black rounded-md">Consolidação</TabsTrigger>
-                <TabsTrigger value="dicionario" className="flex-shrink-0 px-4 py-2 data-[state=active]:bg-[#ECA20C] data-[state=active]:text-black rounded-md">
+                <TabsTrigger value="todos" className="flex-shrink-0 px-4 py-2 data-[state=active]:bg-[#ECA20C] data-[state=active]:text-white rounded-md">Todos</TabsTrigger>
+                <TabsTrigger value="perda" className="flex-shrink-0 px-4 py-2 data-[state=active]:bg-[#ECA20C] data-[state=active]:text-white rounded-md">Perda</TabsTrigger>
+                <TabsTrigger value="definicao" className="flex-shrink-0 px-4 py-2 data-[state=active]:bg-[#ECA20C] data-[state=active]:text-white rounded-md">Definição</TabsTrigger>
+                <TabsTrigger value="consolidacao" className="flex-shrink-0 px-4 py-2 data-[state=active]:bg-[#ECA20C] data-[state=active]:text-white rounded-md">Consolidação</TabsTrigger>
+                <TabsTrigger value="dicionario" className="flex-shrink-0 px-4 py-2 data-[state=active]:bg-[#ECA20C] data-[state=active]:text-white rounded-md">
                   <BookOpen className="h-4 w-4 mr-1" />
                   Dicionario
                 </TabsTrigger>
@@ -382,7 +382,7 @@ export default function VertkalPilates360() {
                   <Crown className="h-6 w-6 text-[#ECA20C]" />
                   Módulos VIP Exclusivos
                 </h2>
-                <p className="text-gray-400 mb-4 text-center">Acelere seus resultados com treinos avançados e conteúdo premium.</p>
+                <p className="text-white mb-4 text-center">Acelere seus resultados com treinos avançados e conteúdo premium.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {exercises.filter(ex => ex.isVip).map((exercise) => (
                     <motion.div
@@ -396,15 +396,15 @@ export default function VertkalPilates360() {
                         </div>
                         <CardContent className="p-6 flex flex-col h-full">
                           <h3 className="font-semibold text-white text-lg mb-2 break-words">{exercise.title}</h3>
-                          <p className="text-gray-300 mb-4 break-words flex-grow">{exercise.description}</p>
-                          <div className="flex items-center gap-2 text-sm text-gray-400 mb-4">
+                          <p className="text-white mb-4 break-words flex-grow">{exercise.description}</p>
+                          <div className="flex items-center gap-2 text-sm text-white mb-4">
                             <Timer className="h-4 w-4" />
                             <span>{exercise.duration}</span>
                           </div>
                           <Button
                             size="sm"
                             onClick={() => setCurrentView('vip')}
-                            className="mt-auto w-full bg-gradient-to-r from-[#ECA20C] to-orange-500 text-black hover:from-[#ECA20C]/90 hover:to-orange-500/90"
+                            className="mt-auto w-full bg-gradient-to-r from-[#ECA20C] to-orange-500 text-white hover:from-[#ECA20C]/90 hover:to-orange-500/90"
                           >
                             <Crown className="h-3 w-3 mr-1" />
                             Desbloquear VIP

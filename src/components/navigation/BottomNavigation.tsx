@@ -21,21 +21,21 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({ currentView, setCur
         <Button
           variant="ghost"
           onClick={() => setCurrentView('dashboard')}
-          className={`rounded-full w-16 h-12 transition-colors ${currentView === 'dashboard' ? 'bg-[#ECA20C] text-black' : 'text-gray-400 hover:text-white'}`}
+          className={`rounded-full w-16 h-12 transition-colors ${currentView === 'dashboard' ? 'bg-[#ECA20C] text-white' : 'text-white hover:text-white'}`}
         >
           <Calendar className="h-5 w-5" />
         </Button>
         <Button
           variant="ghost"
           onClick={() => setCurrentView('achievements')}
-          className={`rounded-full w-16 h-12 transition-colors ${currentView === 'achievements' ? 'bg-[#ECA20C] text-black' : 'text-gray-400 hover:text-white'}`}
+          className={`rounded-full w-16 h-12 transition-colors ${currentView === 'achievements' ? 'bg-[#ECA20C] text-white' : 'text-white hover:text-white'}`}
         >
           <Trophy className="h-5 w-5" />
         </Button>
         <Button
           variant="ghost"
           onClick={() => setCurrentView('vip')}
-          className={`rounded-full w-16 h-12 transition-colors ${currentView === 'vip' ? 'bg-[#ECA20C] text-black' : 'text-gray-400 hover:text-white'}`}
+          className={`rounded-full w-16 h-12 transition-colors ${currentView === 'vip' ? 'bg-[#ECA20C] text-white' : 'text-white hover:text-white'}`}
         >
           <Crown className="h-5 w-5" />
         </Button>

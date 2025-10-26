@@ -30,7 +30,7 @@ const CelebrationOverlay: React.FC<CelebrationOverlayProps> = ({ showCelebration
             initial={{ scale: 0.5, y: 50 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.5, y: 50 }}
-            className="bg-gradient-to-br from-[#ECA20C] to-orange-500 text-black p-8 rounded-2xl text-center max-w-md mx-4"
+            className="bg-gradient-to-br from-[#ECA20C] to-orange-500 text-white p-8 rounded-2xl text-center max-w-md mx-4"
           >
             <Sparkles className="h-16 w-16 mx-auto mb-4" />
             <h2 className="text-2xl font-bold mb-2">Parabéns!</h2>

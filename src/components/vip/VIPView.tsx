@@ -39,7 +39,7 @@ const VIPView: React.FC<VIPViewProps> = ({ onBack, exercises }) => {
       className="space-y-6"
     >
       <div className="flex items-center gap-4">
-        <Button variant="ghost" onClick={onBack} className="text-gray-400 hover:text-white">
+        <Button variant="ghost" onClick={onBack} className="text-white hover:text-white">
           ← Voltar
         </Button>
         <h1 className="text-2xl font-bold text-white">VIP 360°</h1>
@@ -49,7 +49,7 @@ const VIPView: React.FC<VIPViewProps> = ({ onBack, exercises }) => {
         <CardContent className="p-8 text-center">
           <Crown className="h-16 w-16 text-[#ECA20C] mx-auto mb-6" />
           <h2 className="text-3xl font-bold text-white mb-4 break-words">Desbloqueie seu Potencial Máximo</h2>
-          <p className="text-lg text-gray-300 mb-8 break-words">Acesse módulos exclusivos e acelere seus resultados com o plano VIP 360°</p>
+          <p className="text-lg text-white mb-8 break-words">Acesse módulos exclusivos e acelere seus resultados com o plano VIP 360°</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             {vipBenefits.map((benefit, index) => {
@@ -69,7 +69,7 @@ const VIPView: React.FC<VIPViewProps> = ({ onBack, exercises }) => {
             })}
           </div>
 
-          <Button className="w-full bg-gradient-to-r from-[#ECA20C] to-orange-500 hover:from-[#ECA20C]/90 hover:to-orange-500/90 text-black font-bold px-6 py-3 text-base sm:px-12 sm:py-4 sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+          <Button className="w-full bg-gradient-to-r from-[#ECA20C] to-orange-500 hover:from-[#ECA20C]/90 hover:to-orange-500/90 text-white font-bold px-6 py-3 text-base sm:px-12 sm:py-4 sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
             <Crown className="h-5 w-5 mr-2" />
             Upgrade Agora - R$ 97/mês
           </Button>
@@ -90,8 +90,8 @@ const VIPView: React.FC<VIPViewProps> = ({ onBack, exercises }) => {
               </div>
               <CardContent className="p-6">
                 <h3 className="font-semibold text-white text-lg mb-2 break-words">{exercise.title}</h3>
-                <p className="text-gray-300 mb-4 break-words">{exercise.description}</p>
-                <div className="flex items-center gap-2 text-sm text-gray-400">
+                <p className="text-white mb-4 break-words">{exercise.description}</p>
+                <div className="flex items-center gap-2 text-sm text-white">
                   <Timer className="h-4 w-4" />
                   <span>{exercise.duration}</span>
                 </div>

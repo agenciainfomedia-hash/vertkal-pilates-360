@@ -29,12 +29,12 @@ const DictionaryCard: React.FC<DictionaryCardProps> = ({ exercise }) => {
         <CardContent className="p-4">
           <div className="flex items-start gap-3 mb-3">
             <div className="w-16 h-16 bg-black/30 rounded-lg flex items-center justify-center flex-shrink-0">
-              <ImageIcon className="h-8 w-8 text-gray-400" />
+              <ImageIcon className="h-8 w-8 text-white" />
             </div>
             <div className="flex-1 min-w-0">
               <h3 className="font-semibold text-white text-sm leading-tight mb-1 break-words">{exercise.name}</h3>
-              <p className="text-xs text-gray-300 leading-tight mb-2 break-words">{exercise.description}</p>
-              <div className="flex items-center gap-2 text-xs text-gray-400">
+              <p className="text-xs text-white leading-tight mb-2 break-words">{exercise.description}</p>
+              <div className="flex items-center gap-2 text-xs text-white">
                 <Timer className="h-3 w-3" />
                 <span>{exercise.reps}</span>
               </div>
@@ -43,7 +43,7 @@ const DictionaryCard: React.FC<DictionaryCardProps> = ({ exercise }) => {
 
           <div className="flex flex-wrap gap-1">
             {exercise.muscles.map((muscle, index) => (
-              <Badge key={index} variant="outline" className="text-xs border-white/20 text-gray-400">
+              <Badge key={index} variant="outline" className="text-xs border-white/20 text-white">
                 {muscle}
               </Badge>
             ))}

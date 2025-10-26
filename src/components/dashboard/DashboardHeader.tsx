@@ -38,14 +38,14 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({ currentUser, setCurre
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <p className="text-sm text-gray-400 break-words">Olá, {currentUser?.name}!</p>
+            <p className="text-sm text-white break-words">Olá, {currentUser?.name}!</p>
             <p className="text-xs text-[#ECA20C] font-medium break-words">{currentUser?.plan === 'vip' ? 'VIP 360°' : 'Plano Essencial'}</p>
           </motion.div>
           <Button
             variant="ghost"
             size="icon"
             onClick={() => setCurrentView('profile')}
-            className="text-gray-300 hover:text-white hover:bg-white/10 rounded-full"
+            className="text-white hover:text-white hover:bg-white/10 rounded-full"
           >
             <UserIcon className="h-5 w-5" />
           </Button>
