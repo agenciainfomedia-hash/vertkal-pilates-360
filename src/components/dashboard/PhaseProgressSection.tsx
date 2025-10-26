@@ -39,7 +39,7 @@ const PhaseProgressSection: React.FC<PhaseProgressSectionProps> = ({ getPhasePro
   return (
     <Card className="bg-gray-900/50 backdrop-blur-sm border border-white/10 rounded-xl">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-lg">
+        <CardTitle className="flex items-center gap-2 text-lg text-white">
           <TrendingUp className="h-5 w-5 text-[#ECA20C]" />
           Progresso por Fase
         </CardTitle>
