@@ -393,12 +393,12 @@ export default function VertkalPilates360() {
                     >
                       {/* Div para o efeito de brilho neon */}
                       <div className="absolute inset-0 bg-vipPurple/30 rounded-xl blur-lg opacity-70 z-0"></div>
-                      <Card className="bg-gradient-to-br from-black/70 to-gray-950/70 backdrop-blur-sm border border-vipPurple/50 rounded-xl relative overflow-hidden h-full z-10 shadow-xl"> {/* Fundo gradiente e sombra adicionados */}
+                      <Card className="bg-gray-900/50 backdrop-blur-sm border border-vipPurple/50 rounded-xl relative overflow-hidden h-full z-10"> {/* Revertido para bg-gray-900/50 e removido shadow-xl */}
                         <div className="absolute top-4 right-4">
                           <Lock className="h-6 w-6 text-vipPurple" />
                         </div>
                         <CardContent className="p-6 flex flex-col h-full">
-                          <h3 className="font-semibold text-lg mb-2 break-words text-vipPurple">{exercise.title}</h3> {/* Título roxo */}
+                          <h3 className="font-semibold text-lg mb-2 break-words text-white">{exercise.title}</h3> {/* Revertido para text-white */}
                           <p className="text-white mb-4 break-words flex-grow">{exercise.description}</p>
                           <div className="flex items-center gap-2 text-sm text-white mb-4">
                             <Timer className="h-4 w-4" />
