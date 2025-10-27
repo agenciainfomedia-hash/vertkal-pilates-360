@@ -45,9 +45,9 @@ const VIPView: React.FC<VIPViewProps> = ({ onBack, exercises }) => {
         <h1 className="text-2xl font-bold text-white">VIP 360°</h1>
       </div>
 
-      <Card className="bg-gray-900/50 backdrop-blur-sm border-vipPurple/30 rounded-xl"> {/* Changed to border-vipPurple/30 */}
+      <Card className="bg-gray-900/50 backdrop-blur-sm border-vipPurple/30 rounded-xl">
         <CardContent className="p-8 text-center">
-          <Crown className="h-16 w-16 text-vipPurple mx-auto mb-6" /> {/* Changed to text-vipPurple */}
+          <Crown className="h-16 w-16 text-vipPurple mx-auto mb-6" />
           <h2 className="text-3xl font-bold text-white mb-4 break-words">Desbloqueie seu Potencial Máximo</h2>
           <p className="text-lg text-white mb-8 break-words">Acesse módulos exclusivos e acelere seus resultados com o plano VIP 360°</p>
 
@@ -62,16 +62,16 @@ const VIPView: React.FC<VIPViewProps> = ({ onBack, exercises }) => {
                   transition={{ delay: index * 0.1 }}
                   className="flex items-center gap-4 p-4 bg-black/20 rounded-lg"
                 >
-                  {IconComponent && <IconComponent className="h-8 w-8 text-vipPurple flex-shrink-0" />} {/* Changed to text-vipPurple */}
+                  {IconComponent && <IconComponent className="h-8 w-8 text-vipPurple flex-shrink-0" />}
                   <p className="text-white font-medium text-left flex-1 break-words">{benefit.text}</p>
                 </motion.div>
               );
             })}
           </div>
 
-          <Button className="w-full bg-gradient-to-r from-vipPurple-dark to-vipPurple-light hover:from-vipPurple-dark/90 hover:to-vipPurple-light/90 text-white font-bold px-6 py-3 text-base sm:px-12 sm:py-4 sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"> {/* Changed to purple gradient */}
+          <Button className="w-full bg-gradient-to-r from-vipPurple-dark to-vipPurple-light hover:from-vipPurple-dark/90 hover:to-vipPurple-light/90 text-white font-bold px-6 py-3 text-base sm:px-12 sm:py-4 sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
             <Crown className="h-5 w-5 mr-2" />
-            Upgrade Agora - R$ 97/mês
+            Upgrade Agora - R$ 67,90/mês
           </Button>
         </CardContent>
       </Card>
@@ -84,9 +84,9 @@ const VIPView: React.FC<VIPViewProps> = ({ onBack, exercises }) => {
             animate={{ scale: 1 }}
             whileHover={{ scale: 1.02 }}
           >
-            <Card className="bg-gray-900/50 backdrop-blur-sm border border-vipPurple/30 rounded-xl relative overflow-hidden"> {/* Changed to border-vipPurple/30 */}
+            <Card className="bg-gray-900/50 backdrop-blur-sm border border-vipPurple/30 rounded-xl relative overflow-hidden">
               <div className="absolute top-4 right-4">
-                <Lock className="h-6 w-6 text-vipPurple" /> {/* Changed to text-vipPurple */}
+                <Lock className="h-6 w-6 text-vipPurple" />
               </div>
               <CardContent className="p-6">
                 <h3 className="font-semibold text-white text-lg mb-2 break-words">{exercise.title}</h3>
