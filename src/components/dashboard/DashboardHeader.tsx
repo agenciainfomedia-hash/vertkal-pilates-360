@@ -39,7 +39,9 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({ currentUser, setCurre
             transition={{ delay: 0.2 }}
           >
             <p className="text-sm text-white break-words">Olá, {currentUser?.name}!</p>
-            <p className="text-xs text-vipPurple font-medium break-words">{currentUser?.plan === 'vip' ? 'VIP 360°' : 'Plano Essencial'}</p> {/* Changed to text-vipPurple */}
+            <p className={`text-xs font-medium break-words ${currentUser?.plan === 'vip' ? 'text-vipPurple' : 'text-[#ECA20C]'}`}> {/* Alterado para condicional */}
+              {currentUser?.plan === 'vip' ? 'VIP 360°' : 'Plano Essencial'}
+            </p>
           </motion.div>
           <Button
             variant="ghost"
