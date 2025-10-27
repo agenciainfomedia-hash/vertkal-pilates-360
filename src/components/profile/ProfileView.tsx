@@ -50,13 +50,13 @@ const ProfileView: React.FC<ProfileViewProps> = ({
       <Card className="bg-gray-900/50 backdrop-blur-sm border border-white/10 rounded-xl">
         <CardContent className="p-6">
           <div className="flex items-center gap-6 mb-6">
-            <div className="w-20 h-20 bg-vipPurple rounded-full flex items-center justify-center flex-shrink-0"> {/* Changed to bg-vipPurple */}
+            <div className="w-20 h-20 bg-vipPurple rounded-full flex items-center justify-center flex-shrink-0">
               <UserIcon className="h-10 w-10 text-white" />
             </div>
             <div className="flex-1 min-w-0">
               <h2 className="text-2xl font-bold text-white break-words">{currentUser?.name}</h2>
               <p className="text-white break-words">{currentUser?.email}</p>
-              <Badge className={`mt-2 ${currentUser?.plan === 'vip' ? 'bg-vipPurple text-white' : 'bg-white/10 text-white'}`}> {/* Changed to bg-vipPurple */}
+              <Badge className={`mt-2 ${currentUser?.plan === 'vip' ? 'bg-vipPurple text-white' : 'bg-white/10 text-white'}`}>
                 {currentUser?.plan === 'vip' ? 'VIP 360°' : 'Plano Essencial'}
               </Badge>
             </div>
@@ -64,11 +64,11 @@ const ProfileView: React.FC<ProfileViewProps> = ({
 
           <div className="grid grid-cols-2 gap-4 mb-6">
             <div className="text-center p-4 bg-black/20 rounded-lg">
-              <div className="text-2xl font-bold text-vipPurple">{currentUser?.points || 0}</div> {/* Changed to text-vipPurple */}
+              <div className="text-2xl font-bold text-[#ECA20C]">{currentUser?.points || 0}</div>
               <div className="text-sm text-white">Pontos</div>
             </div>
             <div className="text-center p-4 bg-black/20 rounded-lg">
-              <div className="text-2xl font-bold text-orange-500">{currentUser?.streak || 0}</div>
+              <div className="text-2xl font-bold text-[#ECA20C]">{currentUser?.streak || 0}</div>
               <div className="text-sm text-white">Sequência</div>
             </div>
           </div>
@@ -76,7 +76,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({
           <Button
             onClick={() => setCurrentView('achievements')}
             variant="outline"
-            className="w-full justify-start bg-white text-black hover:bg-gray-100 mb-4"
+            className="w-full justify-start bg-white/10 text-white hover:bg-white/20 mb-4"
           >
             <Trophy className="h-5 w-5 mr-3" />
             Ver Conquistas
@@ -85,7 +85,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({
           {currentUser?.plan !== 'vip' && (
             <Button
               onClick={() => setCurrentView('vip')}
-              className="w-full bg-gradient-to-r from-vipPurple-dark to-vipPurple-light hover:from-vipPurple-dark/90 hover:to-vipPurple-light/90 text-white font-bold mb-4" /* Changed to purple gradient */
+              className="w-full bg-gradient-to-r from-vipPurple-dark to-vipPurple-light hover:from-vipPurple-dark/90 hover:to-vipPurple-light/90 text-white font-bold mb-4"
             >
               <Crown className="h-5 w-5 mr-3" />
               Upgrade para VIP
@@ -99,7 +99,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({
               setCurrentView('dashboard');
             }}
             variant="outline"
-            className="w-full justify-start bg-white text-red-400 hover:bg-gray-100 hover:text-red-300"
+            className="w-full justify-start bg-white/10 text-red-400 hover:bg-white/20 hover:text-red-300"
           >
             <LogOut className="h-5 w-5 mr-3" />
             Sair
