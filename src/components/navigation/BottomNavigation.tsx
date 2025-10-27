@@ -15,7 +15,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({ currentView, setCur
     <motion.nav
       initial={{ y: 100 }}
       animate={{ y: 0 }}
-      className="fixed bottom-0 left-0 right-0 bg-black/30 backdrop-blur-lg border-t border-white/10 p-2"
+      className="fixed bottom-0 left-0 right-0 bg-black/30 backdrop-blur-lg border-t border-white/10 p-2 z-40" // Adicionado z-40
     >
       <div className="max-w-md mx-auto flex justify-around">
         <Button
@@ -36,7 +36,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({ currentView, setCur
           variant="ghost"
           onClick={() => setCurrentView('vip')}
           className={`rounded-full w-16 h-12 transition-colors ${currentView === 'vip' ? 'bg-vipPurple text-white' : 'text-white hover:text-white'}`}
-        > {/* Changed to bg-vipPurple */}
+        >
           <Crown className="h-5 w-5" />
         </Button>
       </div>
