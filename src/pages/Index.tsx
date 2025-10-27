@@ -54,6 +54,18 @@ interface Achievement {
   icon: React.ElementType;
 }
 
+// Adicionando a interface para o dicionário de exercícios, se ainda não estiver definida
+// Assumindo que DictionaryExercise é a interface correta para os itens de exerciseDictionary
+interface DictionaryExercise {
+  id: string;
+  name: string;
+  image: string;
+  description: string;
+  reps: string;
+  muscles: string[];
+}
+
+
 export default function VertkalPilates360() {
   const [currentUser, setCurrentUser] = useState<User | null>(null)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -363,7 +375,7 @@ export default function VertkalPilates360() {
 
               <TabsContent value="dicionario" className="mt-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {exerciseDictionary.map((exercise) => (
+                  {exerciseDictionary.map((exercise: DictionaryExercise) => (
                     <DictionaryCard key={exercise.id} exercise={exercise} />
                   ))}
                 </div>
@@ -376,13 +388,13 @@ export default function VertkalPilates360() {
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="space-y-6 mt-24"
+                className="space-y-6 mt-32"
               >
-                <h2 className="text-2xl font-bold text-white flex items-center gap-2 justify-center mb-4"> {/* Adicionado mb-4 */}
+                <h2 className="text-2xl font-bold text-white flex items-center gap-2 justify-center mb-4">
                   <Crown className="h-6 w-6 text-vipPurple" />
                   Módulos VIP Exclusivos
                 </h2>
-                <p className="text-white mb-8 text-center">Acelere seus resultados com treinos avançados e conteúdo premium.</p> {/* Alterado mb-16 para mb-8 */}
+                <p className="text-white mb-12 text-center">Acelere seus resultados com treinos avançados e conteúdo premium.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {exercises.filter(ex => ex.isVip).map((exercise) => (
                     <motion.div
