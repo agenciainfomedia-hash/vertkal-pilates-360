@@ -378,11 +378,11 @@ export default function VertkalPilates360() {
                 transition={{ delay: 0.2 }}
                 className="space-y-6 mt-24"
               >
-                <h2 className="text-2xl font-bold text-white flex items-center gap-2 justify-center">
+                <h2 className="text-2xl font-bold text-white flex items-center gap-2 justify-center mb-4"> {/* Adicionado mb-4 */}
                   <Crown className="h-6 w-6 text-vipPurple" />
                   Módulos VIP Exclusivos
                 </h2>
-                <p className="text-white mb-16 text-center">Acelere seus resultados com treinos avançados e conteúdo premium.</p>
+                <p className="text-white mb-8 text-center">Acelere seus resultados com treinos avançados e conteúdo premium.</p> {/* Alterado mb-16 para mb-8 */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {exercises.filter(ex => ex.isVip).map((exercise) => (
                     <motion.div
@@ -393,12 +393,12 @@ export default function VertkalPilates360() {
                     >
                       {/* Div para o efeito de brilho neon */}
                       <div className="absolute inset-0 bg-vipPurple/30 rounded-xl blur-lg opacity-70 z-0"></div>
-                      <Card className="bg-gray-900/50 backdrop-blur-sm border border-vipPurple/50 rounded-xl relative overflow-hidden h-full z-10"> {/* Revertido para bg-gray-900/50 e removido shadow-xl */}
+                      <Card className="bg-gray-900/50 backdrop-blur-sm border border-vipPurple/50 rounded-xl relative overflow-hidden h-full z-10">
                         <div className="absolute top-4 right-4">
                           <Lock className="h-6 w-6 text-vipPurple" />
                         </div>
                         <CardContent className="p-6 flex flex-col h-full">
-                          <h3 className="font-semibold text-lg mb-2 break-words text-white">{exercise.title}</h3> {/* Revertido para text-white */}
+                          <h3 className="font-semibold text-lg mb-2 break-words text-white">{exercise.title}</h3>
                           <p className="text-white mb-4 break-words flex-grow">{exercise.description}</p>
                           <div className="flex items-center gap-2 text-sm text-white mb-4">
                             <Timer className="h-4 w-4" />
