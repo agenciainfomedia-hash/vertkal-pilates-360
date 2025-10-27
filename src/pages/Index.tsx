@@ -80,16 +80,153 @@ export default function VertkalPilates360() {
   // Mock exercises data - 21 days program + VIP modules
   const exercises: Exercise[] = [
     // Days 1-7: Perda de Peso (8 exercises/day)
-    ...Array.from({ length: 7 }, (_, i) => ({
-      id: `day-${i + 1}`,
-      day: i + 1,
-      title: `Dia ${i + 1} - Queima Intensa`,
+    {
+      id: `day-1`,
+      day: 1,
+      title: `Dia 1 - Ativação Total`,
       duration: "25-30 min",
-      description: "8 movimentos focados em queima de gordura",
-      instructions: ["Aquecimento 3 min", "8 exercícios x 2 séries", "Descanso 30s entre séries", "Alongamento 5 min"],
+      description: "8 movimentos focados em queima de gordura e ativação muscular.",
+      instructions: [
+        "Aquecimento 3 min",
+        "2 séries de 10-12 repetições ou 30s (para isometria/contínuo) para cada exercício:",
+        "Marcha na parede (Wall Marches)",
+        "Prancha na parede (Wall Plank)",
+        "Chute para trás em pé na parede (Standing Glute Kickbacks)",
+        "Agachamento isométrico na parede (Wall Sit)",
+        "Flexão de braços na parede (Wall Push-Ups)",
+        "Torção em pé na parede (Standing Wall Twist)",
+        "Anjo na parede (Wall Angel)",
+        "Alongamento final: Alongamento de peitoral na parede (Wall Pec Stretch)"
+      ],
       isVip: false,
       phase: 'perda' as const
-    })),
+    },
+    {
+      id: `day-2`,
+      day: 2,
+      title: `Dia 2 - Queima Acelerada`,
+      duration: "25-30 min",
+      description: "8 movimentos focados em queima de gordura e resistência.",
+      instructions: [
+        "Aquecimento 3 min",
+        "2 séries de 10-12 repetições ou 30s (para isometria/contínuo) para cada exercício:",
+        "Corrida rápida na parede (joelhos altos) (Wall Sprints)",
+        "Ponte na parede (Wall Bridge)",
+        "Chute de burro na parede (Wall Donkey Kicks)",
+        "Abdominal na parede (Wall Crunches)",
+        "Elevação de panturrilha na parede (Wall Calf Raises)",
+        "Círculos de braço na parede (Wall Arm Circles)",
+        "Alongamento “borboleta” na parede (Wall Butterfly Stretch)",
+        "Alongamento final: Alongamento de isquiotibiais na parede (Wall Hamstring Stretches)"
+      ],
+      isVip: false,
+      phase: 'perda' as const
+    },
+    {
+      id: `day-3`,
+      day: 3,
+      title: `Dia 3 - Força e Flexibilidade`,
+      duration: "25-30 min",
+      description: "8 movimentos focados em força do core e flexibilidade.",
+      instructions: [
+        "Aquecimento 3 min",
+        "2 séries de 10-12 repetições ou 30s (para isometria/contínuo) para cada exercício:",
+        "Prancha na parede (Wall Plank)",
+        "Agachamento isométrico na parede com elevação de perna (Wall Sit with Leg Lifts)",
+        "Flexão na parede com elevação de perna (Wall Push-Ups with Leg Lifts)",
+        "Elevação lateral de perna na parede (Wall Side Leg Lifts)",
+        "Marcha na parede (Wall Marches)",
+        "Torção russa na parede (Wall Russian Twists)",
+        "Alongamento de tríceps na parede (Wall Tricep Stretch)",
+        "Alongamento final: Alongamento de coluna na parede (The Spine Stretch)"
+      ],
+      isVip: false,
+      phase: 'perda' as const
+    },
+    {
+      id: `day-4`,
+      day: 4,
+      title: `Dia 4 - Intensidade Crescente`,
+      duration: "25-30 min",
+      description: "8 movimentos focados em intensidade e definição.",
+      instructions: [
+        "Aquecimento 3 min",
+        "2 séries de 10-12 repetições ou 30s (para isometria/contínuo) para cada exercício:",
+        "Agachamento na parede (Wall Squats)",
+        "Flexão lateral sentado na parede (Seated Side Bends)",
+        "Abdominal na parede (Wall Crunches)",
+        "Toques de ombro na parede (Wall Shoulder Taps)",
+        "Chute para trás em pé na parede (Standing Glute Kickbacks)",
+        "Flexão diamante na parede (Wall Diamond Push-Up)",
+        "Alongamento “sapo” na parede (Wall Frog Stretch)",
+        "Alongamento final: Alongamento lateral na parede (Wall Side Stretch)"
+      ],
+      isVip: false,
+      phase: 'perda' as const
+    },
+    {
+      id: `day-5`,
+      day: 5,
+      title: `Dia 5 - Foco no Core`,
+      duration: "25-30 min",
+      description: "8 movimentos focados em fortalecimento do core e equilíbrio.",
+      instructions: [
+        "Aquecimento 3 min",
+        "2 séries de 10-12 repetições ou 30s (para isometria/contínuo) para cada exercício:",
+        "Agachamento isométrico na parede (Wall Sit)",
+        "Chute de burro na parede (Wall Donkey Kicks)",
+        "Flexão de braços na parede (Wall Push-Ups)",
+        "Círculos de perna em pé na parede (Standing Leg Circles)",
+        "Torção russa na parede (Wall Russian Twists)",
+        "Abdominal bicicleta na parede (Wall Bicycle Crunches)",
+        "Alongamento “figura 4” na parede (Wall Figure 4 Stretch)",
+        "Alongamento final: Alongamento de isquiotibiais na parede (Wall Hamstring Stretches)"
+      ],
+      isVip: false,
+      phase: 'perda' as const
+    },
+    {
+      id: `day-6`,
+      day: 6,
+      title: `Dia 6 - Resistência Total`,
+      duration: "25-30 min",
+      description: "8 movimentos focados em resistência e ativação muscular.",
+      instructions: [
+        "Aquecimento 3 min",
+        "2 séries de 10-12 repetições ou 30s (para isometria/contínuo) para cada exercício:",
+        "Marcha na parede (Wall Marches)",
+        "Elevação de panturrilha na parede (Wall Calf Raises)",
+        "Ponte na parede (Wall Bridge)",
+        "Prancha lateral na parede (Wall Side Plank)",
+        "Anjo na parede (Wall Angel)",
+        "Círculos de braço na parede (Wall Arm Circles)",
+        "Alongamento de peitoral na parede (Wall Pec Stretch)",
+        "Alongamento final: Alongamento de flexores do quadril na parede (Wall Hip Flexor Stretches)"
+      ],
+      isVip: false,
+      phase: 'perda' as const
+    },
+    {
+      id: `day-7`,
+      day: 7,
+      title: `Dia 7 - Recap e Recuperação`,
+      duration: "25-30 min",
+      description: "8 movimentos focados em revisão e recuperação ativa.",
+      instructions: [
+        "Aquecimento 3 min",
+        "2 séries de 10-12 repetições ou 30s (para isometria/contínuo) para cada exercício:",
+        "Prancha na parede (Wall Plank)",
+        "Agachamento isométrico na parede (Wall Sit)",
+        "Elevação lateral de perna na parede (Wall Side Leg Lifts)",
+        "Dead bug na parede (Wall Dead Bug)",
+        "Flexão de braços na parede (Wall Push-Ups)",
+        "Pernas para cima na parede (Legs Up the Wall)",
+        "Deslize de coluna na parede (Wall Roll Downs) (alongamento ativo)",
+        "Alongamento final: Alongamento “borboleta” na parede (Wall Butterfly Stretch)"
+      ],
+      isVip: false,
+      phase: 'perda' as const
+    },
 
     // Days 8-14: Definição (10 exercises/day)
     ...Array.from({ length: 7 }, (_, i) => ({
